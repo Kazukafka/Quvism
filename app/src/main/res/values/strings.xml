@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Quvism</string>
+    <string name="custom_button">Custom Button</string>
+    <string name="tapped">Tapped:</string>
+
+    <string name="question">Question</string>
+    <string name="quiz_count">Q%d</string>
+    <string name="btn_answer">answer</string>
+
+    <string name="title_result">Your Result</string>
+    <string name="result_score">%d / 10</string>
+    <string name="result_total_score">Total Score : %d</string>
+    <string name="btn_return">Return</string>
+</resources>
