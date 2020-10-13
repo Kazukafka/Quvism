@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    ここが右上の円-->
+    <item>
+        <shape
+            android:shape="rectangle"
+            android:background="#000000">
+
+            <corners
+                android:radius="90dp" />
+            <gradient
+                android:angle="90"
+                android:startColor="#8888ff"
+                android:endColor="#8888ff" />
+        </shape>
+    </item>
+<!--    ここが上の四角-->
+    <item
+        android:right="90dp">
+        <shape
+            android:shape="rectangle" >
+
+            <gradient
+                android:angle="90"
+                android:startColor="#8888ff"
+                android:endColor="#8888ff" />
+        </shape>
+    </item>
+    <item
+        android:top="90dp">
+        <shape
+            android:shape="rectangle" >
+
+            <gradient
+                android:angle="90"
+                android:startColor="#ff0000"
+                android:endColor="#8888ff" />
+        </shape>
+    </item>
+</layer-list>
