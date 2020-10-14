@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffb6c1"
+    android:background="#f5deb3"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -26,19 +26,21 @@
 
         <TextView
             android:id="@+id/questionLabel"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="50dp"
             android:text="Question"
-            android:textSize="24sp" />
+            android:textSize="50sp"
+            android:textAlignment="center" />
 
         <Button
             android:id="@+id/answerBtn1"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="80dp"
 
             android:text="answer1"
+            android:textSize="30dp"
             android:background="@drawable/btn_state"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -48,11 +50,12 @@
 
         <Button
             android:id="@+id/answerBtn2"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="6dp"
 
             android:text="answer2"
+            android:textSize="30dp"
             android:background="@drawable/btn_state"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -62,11 +65,12 @@
 
         <Button
             android:id="@+id/answerBtn3"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="6dp"
 
             android:text="answer3"
+            android:textSize="30dp"
             android:background="@drawable/btn_state"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -76,11 +80,12 @@
 
         <Button
             android:id="@+id/answerBtn4"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="6dp"
 
             android:text="answer4"
+            android:textSize="30dp"
             android:background="@drawable/btn_state"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -93,8 +98,7 @@
             android:layout_height="wrap_content"
             android:gravity="bottom"
             android:orientation="horizontal"
-            android:paddingBottom="1dp"
-            android:paddingTop="40dp">
+            android:paddingBottom="1dp">
 
             <ImageButton
                 android:id="@+id/image_button1"
@@ -102,7 +106,7 @@
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/sound_image" />
+                android:background="@drawable/button_round" />
 
             <ImageButton
                 android:id="@+id/image_button2"
