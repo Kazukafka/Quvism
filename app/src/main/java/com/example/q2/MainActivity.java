@@ -1,21 +1,30 @@
 package com.example.q2;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+import android.speech.tts.TextToSpeech;
+
+public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener{
+
+    int MY_DATA_CHECK_CODE = 1000;
+    TextToSpeech textToSpeech;
 
     private TextView countLabel;
     private TextView questionLabel;
@@ -28,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
     private int rightAnswerCount = 0;
     private int qCount = 1;
     static final private int QUIZ_COUNT = 10;
+
+    TextView ttsText;
+    ImageButton speakbutton;
 
     ArrayList<ArrayList<String>> questionArray1 = new ArrayList<>();
 
@@ -50,6 +62,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        textToSpeech = new TextToSpeech(getApplicationContext(), this);
+
+        ttsText = (TextView) findViewById(R.id.questionLabel);
+        speakbutton = (ImageButton) findViewById(R.id.image_button1);
+        speakbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String text = ttsText.getText().toString();
+                if(text.length() > 0){
+                    textToSpeech.speak(text,TextToSpeech.QUEUE_ADD, null);
+                }
+            }
+        });
+
+        Intent intent = new Intent();
+        intent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+        startActivityForResult(intent, MY_DATA_CHECK_CODE);
 
         countLabel = findViewById(R.id.countLabel);
         questionLabel = findViewById(R.id.questionLabel);
@@ -79,6 +109,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == MY_DATA_CHECK_CODE) {
+            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS){
+                textToSpeech = new TextToSpeech(this, this);
+            } else {
+                Intent intent = new Intent();
+                intent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+                startActivity(intent);
+            }
+        }}
+
+    public void onInit(int i) {
+        if(i == textToSpeech.SUCCESS){
+            Toast.makeText(this,"Success",Toast.LENGTH_SHORT).show();
+        } else if (i == textToSpeech.ERROR){
+            Toast.makeText(this,"Error",Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public void showNextQuiz() {
         //Reflesh quizCount
         countLabel.setText(getString(R.string.quiz_count, qCount));
@@ -87,7 +139,6 @@ public class MainActivity extends AppCompatActivity {
         Random random = new Random();
         int randomNum = random.nextInt(questionArray1.size());
 
-        // randomNumを使って、quizArrayからクイズを一つ取り出す
         //Get one from questionArray by using randomNum
         ArrayList<String> question = questionArray1.get(randomNum);
 
