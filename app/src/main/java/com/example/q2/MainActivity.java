@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 import java.util.Random;
 
 import android.speech.tts.TextToSpeech;
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             public void onClick(View view) {
                 String text = ttsText.getText().toString();
                 if(text.length() > 0){
+                    textToSpeech.setLanguage(new Locale("et-EE"));
                     textToSpeech.speak(text,TextToSpeech.QUEUE_ADD, null);
                 }
             }
@@ -125,9 +127,9 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
     public void onInit(int i) {
         if(i == textToSpeech.SUCCESS){
-            Toast.makeText(this,"Success",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,"Success",Toast.LENGTH_SHORT).show();
         } else if (i == textToSpeech.ERROR){
-            Toast.makeText(this,"Error",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,"Error",Toast.LENGTH_SHORT).show();
         }
     }
 
