@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ResultActivity"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#f5deb3" >
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,13 +16,25 @@
         android:textSize="20sp"
         android:layout_marginTop="50dp"/>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/star" />
+
     <TextView
         android:id="@+id/resultLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/result_score"
-        android:textSize="30sp"
-        android:layout_marginTop="60dp"/>
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/totalScoreLabel"
@@ -34,9 +47,9 @@
     <Button
         android:layout_width="140dp"
         android:layout_height="60dp"
-        android:text="@string/btn_return"
-        android:textSize="18sp"
         android:layout_marginTop="80dp"
-        android:onClick="returnTop"/>
+        android:onClick="returnTop"
+        android:text="@string/btn_return"
+        android:textSize="18sp" />
 
 </LinearLayout>

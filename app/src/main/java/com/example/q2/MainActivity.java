@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     ArrayList<ArrayList<String>> questionArray1 = new ArrayList<>();
 
     //Test by SharedPriffferences
+    /*
     String[][] qDB = {
             // {"Estonian", "RightAnswer", "Choice_1", "Choice _２", "Choice_３"}
             {"Tere", "Hello", "Thanks", "Oh my god", "No"},
@@ -56,7 +57,31 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             {"Homseni!", "See you tomorrow", "ABC", "fine", "Soso"},
             {"Head ööd!", "Good night", "No", "Yes", "PPAP"},
             {"Tere tulemast!", "Welcome! (informal)", "Hell", "Yes", "It is easy"},
-            {"Tere tulemast tagasi!", "Welcome back!", "OK", "left", "right"},
+            {"Tere tulemast tagasi!2", "Welcome back!", "OK", "left", "right"},
+            {"Tere tulemast tagasi!2", "Welcome back!", "OK", "left", "right"},
+            {"Tere tulemast tagasi!2", "Welcome back!", "OK", "left", "right"},
+            {"Tere tulemast tagasi!3", "Welcome back!", "OK", "left", "right"},
+            {"Tere tulemast tagasi!3", "Welcome back!", "OK", "left", "right"},
+            {"Tere tulemast tagasi!3", "Welcome back!", "OK", "left", "right"},
+            {"Tere tulemast tagasi!3", "Welcome back!", "OK", "left", "right"},
+
+    };
+
+     */
+
+    String[][] qDB1 = {
+            {"Tere", "Hello", "Thanks", "Oh my god", "No"},
+            {"Aitah", "Thank you", "Yes", "Well Done", "Not really"},
+            {"Homikst", "Morning","ABC", "Doremi", "Evening"},
+            {"Head ööd!", "Good Evening", "How are you?", "Fine", "Soso"},
+            {"Nägemist!", "Bye!","See you", "Good", "Never"},
+            {"Maga hästi!", "Sleep well","Hey", "Never mind", "right"},
+            {"Homseni!", "See you tomorrow", "ABC", "fine", "Soso"},
+            {"Head ööd!", "Good night", "No", "Yes", "PPAP"},
+            {"Tere tulemast!", "Welcome! (informal)", "Hell", "Yes", "It is easy"},
+            {"Tere tulemast tagasi!2", "Welcome back!", "OK", "left", "right"},
+            {"Tere tulemast tagasi!2", "Welcome back!", "OK", "left", "right"},
+            {"Tere tulemast tagasi!2", "Welcome back!", "OK", "left", "right"},
     };
 
     @Override
@@ -91,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         answerBtn4 = findViewById(R.id.answerBtn4);
 
         //Make questionArray from qDB
-        for (String[] quizDatum : qDB) {
+        for (String[] quizDatum : qDB1) {
 
             //Prepare the nw array
             ArrayList<String> tmpArray = new ArrayList<>();
