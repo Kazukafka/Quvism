@@ -2,6 +2,8 @@ package com.example.q2;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -20,7 +22,6 @@ import java.util.Collections;
 import java.util.Locale;
 import java.util.Random;
 
-import android.speech.tts.TextToSpeech;
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener{
 
@@ -40,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     static final private int QUIZ_COUNT = 10;
 
     TextView ttsText;
-    ImageButton speakbutton;
 
     ArrayList<ArrayList<String>> questionArray1 = new ArrayList<>();
 
@@ -89,10 +89,33 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ImageButton speakbutton;
+
         textToSpeech = new TextToSpeech(getApplicationContext(), this);
 
+        ImageButton button01 = findViewById(R.id.image_button_setting);
+
+        if(savedInstanceState == null){
+            button01.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                    // BackStackを設定
+                    fragmentTransaction.addToBackStack(null);
+
+                    // パラメータを設定
+                    fragmentTransaction.replace(R.id.container,
+                            TestFragment.newInstance("Fragment"));
+                    fragmentTransaction.commit();
+                }
+
+            });
+        }
+
         ttsText = (TextView) findViewById(R.id.questionLabel);
-        speakbutton = (ImageButton) findViewById(R.id.image_button1);
+        speakbutton = (ImageButton) findViewById(R.id.image_button_speak);
         speakbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -101,7 +101,7 @@
             android:paddingBottom="1dp">
 
             <ImageButton
-                android:id="@+id/image_button1"
+                android:id="@+id/image_button_speak"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
@@ -109,7 +109,7 @@
                 android:background="@drawable/button_round_speak" />
 
             <ImageButton
-                android:id="@+id/image_button3"
+                android:id="@+id/image_button_check"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
@@ -117,14 +117,20 @@
                 android:background="@drawable/button_round_check" />
 
             <ImageButton
-                android:id="@+id/image_button4"
+                android:id="@+id/image_button_setting"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_round_setting" />
 
+
         </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
