@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     //SQLite Components
     private TestOpenHelper helper;
     private SQLiteDatabase db;
-    private TextView editTextKey, editTextValue;
 
     private LinearLayout mLayout2;
     private LinearLayout mLayout1;
@@ -271,7 +270,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     }
 
     //InsertDate method
-    private void insertData(SQLiteDatabase db, String com, int price){
+    private void insertData(SQLiteDatabase db, String com, String price){
 
         ContentValues values = new ContentValues();
         values.put("company", com);
@@ -304,10 +303,10 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                 db = helper.getWritableDatabase();
             }
 
-            String key = editTextKey.getText().toString();
-            String value = editTextValue.getText().toString();
+            String key = questionLabel.getText().toString();
+            String value = rightAnswer;
 
-            insertData(db, key, Integer.valueOf(value));
+            insertData(db, key, value);
         }
 
         //Create dialog

@@ -21,7 +21,7 @@ public class TestOpenHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + TABLE_NAME + " (" +
                     _ID + " INTEGER PRIMARY KEY," +
                     COLUMN_NAME_TITLE + " TEXT," +
-                    COLUMN_NAME_SUBTITLE + " INTEGER)";
+                    COLUMN_NAME_SUBTITLE + " TEXT)";
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + TABLE_NAME;
