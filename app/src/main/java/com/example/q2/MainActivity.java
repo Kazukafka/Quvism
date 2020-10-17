@@ -107,11 +107,30 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
         textToSpeech = new TextToSpeech(getApplicationContext(), this);
 
-        ImageButton button_check = findViewById(R.id.image_button_check);
-        ImageButton button_setting = findViewById(R.id.image_button_setting);
+        ImageButton button_fragment = findViewById(R.id.image_button_check);
 
         mLayout1 = (LinearLayout)findViewById(R.id.layout1);
         mLayout2 = (LinearLayout)findViewById(R.id.layout2);
+
+        if(savedInstanceState == null){
+            button_fragment.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    FragmentManager fragmentManager1 = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager1.beginTransaction();
+
+                    // BackStackを設定
+                    fragmentTransaction.addToBackStack(null);
+
+                    // パラメータを設定
+                    fragmentTransaction.replace(R.id.container,
+                            TestFragment.newInstance("Fragment"));
+                    fragmentTransaction.commit();
+                }
+
+            });
+        }
+
 
         findViewById(R.id.image_button_setting).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             }
         });
 
-        findViewById(R.id.button222).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.button_back_main).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mLayout1.setVisibility(View.VISIBLE);
@@ -129,34 +148,13 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             }
         });
 
-
-
-        if(savedInstanceState == null){
-            button_check.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View view){
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    //Setting the BackStack
-                    fragmentTransaction.addToBackStack(null);
-                    //Set the parameters
-                    fragmentTransaction.replace(R.id.container,
-                            TestFragment.newInstance("Fragment"));
-                    fragmentTransaction.commit();
-
-                    //SP Create
-                    dataStore = getSharedPreferences("DataStore", MODE_PRIVATE);
-                }
-            });
-        }
-
         /*
         SharedPreferences data = getSharedPreferences("Data", MODE_PRIVATE);
         final float dataFloat1 = data.getFloat("DataFloat1", 0);
         final float dataFloat2 = data.getFloat("DataFloat2", 0);
         */
 
-
+        //image_button_sepak
         ttsText = (TextView) findViewById(R.id.questionLabel);
         speakbutton = (ImageButton) findViewById(R.id.image_button_speak);
         speakbutton.setOnClickListener(new View.OnClickListener() {
@@ -174,8 +172,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                     textToSpeech.setPitch(pitch);
                     textToSpeech.setSpeechRate(speed);
                     */
-                    float test = dataStore.getFloat("DataFloat1", 0);
-                    textToSpeech.setPitch(test);
                     textToSpeech.setLanguage(new Locale("et-EE"));
                     textToSpeech.speak(text,TextToSpeech.QUEUE_ADD, null);
                 }

@@ -145,16 +145,21 @@
                 android:textSize="40dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="40dp"
-                android:text="画面２" />
+                android:text="Screen2" />
 
             <Button
-                android:id="@+id/button222"
+                android:id="@+id/button_back_main"
                 android:layout_width="match_parent"
                 android:layout_height="416dp"
                 android:layout_weight="1"
                 android:gravity="bottom"
-                android:text="画面2" />
+                android:text="Test" />
         </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </FrameLayout>
 
