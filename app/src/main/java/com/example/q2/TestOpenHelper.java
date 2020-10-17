@@ -7,10 +7,10 @@ import android.util.Log;
 
 public class TestOpenHelper extends SQLiteOpenHelper {
 
-    // データーベースのバージョン
+    //Version Of DataBase
     private static final int DATABASE_VERSION = 1;
 
-    // データーベース名
+    //Name of DataBase
     private static final String DATABASE_NAME = "TestDB.db";
     private static final String TABLE_NAME = "testdb";
     private static final String _ID = "_id";
@@ -35,8 +35,8 @@ public class TestOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        // テーブル作成
-        // SQLiteファイルがなければSQLiteファイルが作成される
+        //Make Table
+        //If there is no SQLfile, then make it!
         db.execSQL(
                 SQL_CREATE_ENTRIES
         );
@@ -47,7 +47,7 @@ public class TestOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // アップデートの判別
+        //Check the Update
         db.execSQL(
                 SQL_DELETE_ENTRIES
         );
