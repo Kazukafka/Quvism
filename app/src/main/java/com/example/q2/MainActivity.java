@@ -10,10 +10,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +43,10 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     static final private int QUIZ_COUNT = 10;
 
     TextView ttsText;
+
+    private SeekBar mSeekBarPitch;
+    private SeekBar mSeekBarSpeed;
+
 
     ArrayList<ArrayList<String>> questionArray1 = new ArrayList<>();
 
@@ -84,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             {"Tere tulemast tagasi!2", "Welcome back!", "OK", "left", "right"},
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,18 +108,16 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                 public void onClick(View view){
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                    // BackStackを設定
+                    //Setting the BackStack
                     fragmentTransaction.addToBackStack(null);
-
-                    // パラメータを設定
+                    //Set the parameters
                     fragmentTransaction.replace(R.id.container,
                             TestFragment.newInstance("Fragment"));
                     fragmentTransaction.commit();
                 }
-
             });
         }
+
 
         ttsText = (TextView) findViewById(R.id.questionLabel);
         speakbutton = (ImageButton) findViewById(R.id.image_button_speak);
@@ -121,6 +126,16 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             public void onClick(View view) {
                 String text = ttsText.getText().toString();
                 if(text.length() > 0){
+                    /*mSeekBarPitch = findViewById(R.id.seek_bar_pitch);
+                    mSeekBarSpeed = findViewById(R.id.seek_bar_speed);
+                    float pitch = (float) mSeekBarPitch.getProgress() / 50;
+                    if (pitch < 0.1) pitch = 0.1f;
+                    float speed = (float) mSeekBarSpeed.getProgress() / 50;
+                    if (speed < 0.1) speed = 0.1f;
+                    textToSpeech.setPitch(pitch);
+                    textToSpeech.setSpeechRate(speed);
+
+                     */
                     textToSpeech.setLanguage(new Locale("et-EE"));
                     textToSpeech.speak(text,TextToSpeech.QUEUE_ADD, null);
                 }

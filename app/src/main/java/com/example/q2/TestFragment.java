@@ -4,17 +4,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 public class TestFragment extends Fragment {
 
     public static TestFragment newInstance(String str){
-        // Fragemnt01 インスタンス生成
+
+        //Make an instance
         TestFragment fragment = new TestFragment();
-        // Bundle にパラメータを設定
+        //Setting Para to BUndle
         Bundle barg = new Bundle();
         barg.putString("Message", str);
         fragment.setArguments(barg);
@@ -22,7 +26,7 @@ public class TestFragment extends Fragment {
         return fragment;
     }
 
-    // FragmentのViewを生成して返す
+    //Make Fragment and back it
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
@@ -37,10 +41,17 @@ public class TestFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle args = getArguments();
-        if(args != null ){
-            String str = args.getString("Message");
-            TextView textView = view.findViewById(R.id.text_fragment);
-            textView.setText(str);
-        }
+
+        //One Back by BackStack
+        Button pop01 = view.findViewById(R.id.button2);
+        pop01.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                FragmentManager fragmentManager = getFragmentManager();
+                if(fragmentManager != null) {
+                    fragmentManager.popBackStack();
+                }
+            }
+        });
     }
 }
