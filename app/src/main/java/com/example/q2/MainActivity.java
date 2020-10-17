@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +28,9 @@ import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener{
+
+    private LinearLayout mLayout2;
+    private LinearLayout mLayout1;
 
     int MY_DATA_CHECK_CODE = 1000;
     TextToSpeech textToSpeech;
@@ -44,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
     TextView ttsText;
 
+    //Fragment Data Moveing 1) Create SP in Main 2) Call the sp in Fragmet 3) Edit sp in fragment 4) get data from SP in Main
+    private SharedPreferences dataStore;
     private SeekBar mSeekBarPitch;
     private SeekBar mSeekBarSpeed;
 
@@ -94,16 +101,38 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
         ImageButton speakbutton;
 
         textToSpeech = new TextToSpeech(getApplicationContext(), this);
 
-        ImageButton button01 = findViewById(R.id.image_button_setting);
+        ImageButton button_check = findViewById(R.id.image_button_check);
+        ImageButton button_setting = findViewById(R.id.image_button_setting);
+
+        mLayout1 = (LinearLayout)findViewById(R.id.layout1);
+        mLayout2 = (LinearLayout)findViewById(R.id.layout2);
+
+        findViewById(R.id.image_button_setting).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mLayout2.setVisibility(View.VISIBLE);
+                mLayout1.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        findViewById(R.id.button222).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mLayout1.setVisibility(View.VISIBLE);
+                mLayout2.setVisibility(View.INVISIBLE);
+            }
+        });
+
+
 
         if(savedInstanceState == null){
-            button01.setOnClickListener(new View.OnClickListener(){
+            button_check.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
                     FragmentManager fragmentManager = getSupportFragmentManager();
@@ -114,9 +143,18 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                     fragmentTransaction.replace(R.id.container,
                             TestFragment.newInstance("Fragment"));
                     fragmentTransaction.commit();
+
+                    //SP Create
+                    dataStore = getSharedPreferences("DataStore", MODE_PRIVATE);
                 }
             });
         }
+
+        /*
+        SharedPreferences data = getSharedPreferences("Data", MODE_PRIVATE);
+        final float dataFloat1 = data.getFloat("DataFloat1", 0);
+        final float dataFloat2 = data.getFloat("DataFloat2", 0);
+        */
 
 
         ttsText = (TextView) findViewById(R.id.questionLabel);
@@ -126,7 +164,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             public void onClick(View view) {
                 String text = ttsText.getText().toString();
                 if(text.length() > 0){
-                    /*mSeekBarPitch = findViewById(R.id.seek_bar_pitch);
+                    /*
+                    mSeekBarPitch = findViewById(R.id.seek_bar_pitch);
                     mSeekBarSpeed = findViewById(R.id.seek_bar_speed);
                     float pitch = (float) mSeekBarPitch.getProgress() / 50;
                     if (pitch < 0.1) pitch = 0.1f;
@@ -134,8 +173,9 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                     if (speed < 0.1) speed = 0.1f;
                     textToSpeech.setPitch(pitch);
                     textToSpeech.setSpeechRate(speed);
-
-                     */
+                    */
+                    float test = dataStore.getFloat("DataFloat1", 0);
+                    textToSpeech.setPitch(test);
                     textToSpeech.setLanguage(new Locale("et-EE"));
                     textToSpeech.speak(text,TextToSpeech.QUEUE_ADD, null);
                 }
