@@ -6,9 +6,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
@@ -28,6 +30,11 @@ import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener{
+
+    //SQLite Components
+    private TestOpenHelper helper;
+    private SQLiteDatabase db;
+    private TextView editTextKey, editTextValue;
 
     private LinearLayout mLayout2;
     private LinearLayout mLayout1;
@@ -50,9 +57,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     TextView ttsText;
 
     //Fragment Data Moveing 1) Create SP in Main 2) Call the sp in Fragmet 3) Edit sp in fragment 4) get data from SP in Main
-    private SharedPreferences dataStore;
-    private SeekBar mSeekBarPitch;
-    private SeekBar mSeekBarSpeed;
 
 
     ArrayList<ArrayList<String>> questionArray1 = new ArrayList<>();
@@ -119,10 +123,10 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                     FragmentManager fragmentManager1 = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager1.beginTransaction();
 
-                    // BackStackを設定
+                    //Set BackStack
                     fragmentTransaction.addToBackStack(null);
 
-                    // パラメータを設定
+                    //Set the Parameter
                     fragmentTransaction.replace(R.id.container,
                             TestFragment.newInstance("Fragment"));
                     fragmentTransaction.commit();
@@ -266,6 +270,16 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         questionArray1.remove(randomNum);
     }
 
+    //InsertDate method
+    private void insertData(SQLiteDatabase db, String com, int price){
+
+        ContentValues values = new ContentValues();
+        values.put("company", com);
+        values.put("stockprice", price);
+
+        db.insert("testdb", null, values);
+    }
+
 
     public void checkAnswer(View view) {
 
@@ -279,6 +293,21 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             rightAnswerCount++;
         } else {
             alertTitle = "Wrong...";
+
+            //If the Answer is wrong, correct mistakes to the SQLite here
+            //This DB will be shown in the MistakeActivity in ListView
+            if(helper == null){
+                helper = new TestOpenHelper(getApplicationContext());
+            }
+
+            if(db == null){
+                db = helper.getWritableDatabase();
+            }
+
+            String key = editTextKey.getText().toString();
+            String value = editTextValue.getText().toString();
+
+            insertData(db, key, Integer.valueOf(value));
         }
 
         //Create dialog
