@@ -10,12 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".TestFragment"></activity>
-        <activity android:name=".StartActivity">
+        <activity android:name=".MistakesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".StartActivity">
+
         </activity>
         <activity android:name=".ResultActivity"></activity>
         <activity android:name=".MainActivity"></activity>
