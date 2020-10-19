@@ -11,4 +11,9 @@
     <string name="result_score">%d / 10</string>
     <string name="result_total_score">Total Score : %d</string>
     <string name="btn_return">Return</string>
+
+    <string name="insert">insert</string>
+    <string name="read">read</string>
+    <string name="hint_key">company</string>
+    <string name="hint_value">US$price</string>
 </resources>

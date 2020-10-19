@@ -52,4 +52,12 @@
         android:text="@string/btn_return"
         android:textSize="18sp" />
 
+    <Button
+        android:id="@+id/button999"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="80dp"
+        android:text="ShowAC"
+        android:textSize="18sp" />
+
 </LinearLayout>

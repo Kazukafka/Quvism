@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,10 +39,21 @@ public class ResultActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("tScore", totalSco);
         editor.apply();
+
+        Button btn = findViewById(R.id.button999);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), ShowActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void returnTop(View view) {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        //StartActivity is Capital, so this is just a command
         startActivity(intent);
     }
 }
