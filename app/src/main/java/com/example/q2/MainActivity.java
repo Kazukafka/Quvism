@@ -23,6 +23,11 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
@@ -105,6 +110,43 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        //Ad Place
+        // Test App ID
+        MobileAds.initialize(this,
+                "ca-app-pub-3940256099942544~3347511713");
+
+        AdView adView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
+        // ad's lifecycle: loading, opening, closing, and so on
+        adView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                Log.d("debug","Code to be executed when an ad finishes loading.");
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                Log.d("debug","Code to be executed when an ad request fails.");
+            }
+
+            @Override
+            public void onAdOpened() {
+                Log.d("debug","Code to be executed when an ad opens an overlay that covers the screen.");
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                Log.d("debug","Code to be executed when the user has left the app.");
+            }
+
+            @Override
+            public void onAdClosed() {
+                Log.d("debug","Code to be executed when when the user is about to return to the app after tapping on an ad.");
+            }
+        });
 
         ImageButton speakbutton;
 
