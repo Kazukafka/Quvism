@@ -222,10 +222,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         bbreset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                float pitch = 50;
-                float speed = 50;
-                textToSpeech.setPitch(pitch);
-                textToSpeech.setSpeechRate(speed);
+                mSeekBarPitch.setProgress(50);
+                mSeekBarSpeed.setProgress(50);
             }
         });
 
