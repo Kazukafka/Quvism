@@ -175,20 +175,28 @@
                 android:layout_marginBottom="16dp"
                 android:progress="50" />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mode"
-                android:textSize="25sp"
-                android:textColor="#ffffff"/>
+                android:orientation="horizontal"
+                android:paddingBottom="1dp">
 
-            <Switch
-                android:id="@+id/switch1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:checked="true"
-                android:showText="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mode"
+                    android:textSize="25sp"
+                    android:textColor="#ffffff"/>
+
+                <Switch
+                    android:id="@+id/switch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:checked="true"
+                    android:showText="true" />
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/resetPS"
@@ -197,8 +205,6 @@
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:text="Reset" />
-
-
 
             <Button
                 android:id="@+id/button_back_main"
@@ -210,9 +216,9 @@
 
         <FrameLayout
             android:id="@+id/container"
-            android:layout_gravity="bottom"
+            android:layout_gravity="top"
             android:layout_width="match_parent"
-            android:layout_height="300dp" />
+            android:layout_height="80dp" />
 
     </FrameLayout>
 
