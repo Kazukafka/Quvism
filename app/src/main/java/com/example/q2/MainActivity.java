@@ -114,14 +114,18 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         //Ad Place
         // Test App ID
         MobileAds.initialize(this,
-                "ca-app-pub-3940256099942544~3347511713");
+                "ca-app-pub-6500766760315589~2685471571");
 
-        AdView adView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
+        AdView adViewOne = findViewById(R.id.adView1);
+        AdRequest adRequest1 = new AdRequest.Builder().build();
+        adViewOne.loadAd(adRequest1);
+
+        AdView adViewTwo = findViewById(R.id.adView2);
+        AdRequest adRequest2 = new AdRequest.Builder().build();
+        adViewTwo.loadAd(adRequest2);
 
         // ad's lifecycle: loading, opening, closing, and so on
-        adView.setAdListener(new AdListener() {
+        adViewOne.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
                 Log.d("debug","Code to be executed when an ad finishes loading.");
@@ -181,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             @Override
             public void onClick(View view) {
                 mLayout2.setVisibility(View.VISIBLE);
-                mLayout1.setVisibility(View.INVISIBLE);
+                //mLayout1.setVisibility(View.INVISIBLE);
             }
         });
 
