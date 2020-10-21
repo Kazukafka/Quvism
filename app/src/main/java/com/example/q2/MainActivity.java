@@ -58,11 +58,13 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     private int qCount = 1;
     static final private int QUIZ_COUNT = 10;
 
+    //TextToSpeech
     TextView ttsText;
+    private SeekBar mSeekBarPitch;
+    private SeekBar mSeekBarSpeed;
+    private Button bbreset;
 
     //Fragment Data Moveing 1) Create SP in Main 2) Call the sp in Fragmet 3) Edit sp in fragment 4) get data from SP in Main
-
-
     ArrayList<ArrayList<String>> questionArray1 = new ArrayList<>();
 
     //Test by SharedPriffferences
@@ -119,10 +121,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         AdView adViewOne = findViewById(R.id.adView1);
         AdRequest adRequest1 = new AdRequest.Builder().build();
         adViewOne.loadAd(adRequest1);
-
-        AdView adViewTwo = findViewById(R.id.adView2);
-        AdRequest adRequest2 = new AdRequest.Builder().build();
-        adViewTwo.loadAd(adRequest2);
 
         // ad's lifecycle: loading, opening, closing, and so on
         adViewOne.setAdListener(new AdListener() {
@@ -197,6 +195,9 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             }
         });
 
+        mSeekBarPitch = findViewById(R.id.seek_bar_pitch);
+        mSeekBarSpeed = findViewById(R.id.seek_bar_speed);
+
         //image_button_speak
         ttsText = (TextView) findViewById(R.id.questionLabel);
         speakbutton = (ImageButton) findViewById(R.id.image_button_speak);
@@ -205,9 +206,26 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             public void onClick(View view) {
                 String text = ttsText.getText().toString();
                 if(text.length() > 0){
+                    float pitch = (float) mSeekBarPitch.getProgress() / 50;
+                    if (pitch < 0.1) pitch = 0.1f;
+                    float speed = (float) mSeekBarSpeed.getProgress() / 50;
+                    if (speed < 0.1) speed = 0.1f;
+                    textToSpeech.setPitch(pitch);
+                    textToSpeech.setSpeechRate(speed);
                     textToSpeech.setLanguage(new Locale("et-EE"));
                     textToSpeech.speak(text,TextToSpeech.QUEUE_ADD, null);
                 }
+            }
+        });
+
+        bbreset = (Button) findViewById(R.id.resetPS);
+        bbreset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                float pitch = 50;
+                float speed = 50;
+                textToSpeech.setPitch(pitch);
+                textToSpeech.setSpeechRate(speed);
             }
         });
 

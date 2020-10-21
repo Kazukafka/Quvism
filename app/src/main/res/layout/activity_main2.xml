@@ -44,7 +44,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginTop="80dp"
-
                 android:text="answer1"
                 android:textSize="30dp"
                 android:background="@drawable/btn_state"
@@ -59,7 +58,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginTop="6dp"
-
                 android:text="answer2"
                 android:textSize="30dp"
                 android:background="@drawable/btn_state"
@@ -74,7 +72,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginTop="6dp"
-
                 android:text="answer3"
                 android:textSize="30dp"
                 android:background="@drawable/btn_state"
@@ -89,7 +86,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginTop="6dp"
-
                 android:text="answer4"
                 android:textSize="30dp"
                 android:background="@drawable/btn_state"
@@ -149,35 +145,50 @@
             android:layout_height="300dp"
             android:layout_gravity="bottom"
             android:orientation="vertical"
-            android:visibility="invisible">
+            android:visibility="invisible"
+            android:background="#0000ff">
+
             <TextView
-                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="40dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:text="Screen2" />
+                android:text="Pitch"
+                android:textSize="25sp"
+                android:textColor="#ffffff"/>
+
+            <SeekBar
+                android:id="@+id/seek_bar_pitch"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:progress="50" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Speed"
+                android:textSize="25sp"
+                android:textColor="#ffffff"/>
+
+            <SeekBar
+                android:id="@+id/seek_bar_speed"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:progress="50" />
+
+            <Button
+                android:id="@+id/resetPS"
+                android:layout_marginBottom="70dp"
+                android:layout_gravity="right"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="Reset" />
 
             <Button
                 android:id="@+id/button_back_main"
                 android:layout_width="match_parent"
-                android:layout_height="416dp"
-                android:layout_weight="1"
-                android:gravity="bottom"
-                android:text="Test" />
+                android:layout_height="50dp"
+                android:text="OK" />
 
-<!--            Advertisement Place -->
-            <com.google.android.gms.ads.AdView
-                android:layout_gravity="center"
-                android:id="@+id/adView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                ads:adSize="BANNER"
-                ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
-            </com.google.android.gms.ads.AdView>
         </LinearLayout>
 
         <FrameLayout
