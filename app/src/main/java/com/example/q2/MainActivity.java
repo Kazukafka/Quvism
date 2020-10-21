@@ -197,13 +197,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             }
         });
 
-        /*
-        SharedPreferences data = getSharedPreferences("Data", MODE_PRIVATE);
-        final float dataFloat1 = data.getFloat("DataFloat1", 0);
-        final float dataFloat2 = data.getFloat("DataFloat2", 0);
-        */
-
-        //image_button_sepak
+        //image_button_speak
         ttsText = (TextView) findViewById(R.id.questionLabel);
         speakbutton = (ImageButton) findViewById(R.id.image_button_speak);
         speakbutton.setOnClickListener(new View.OnClickListener() {
@@ -211,16 +205,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             public void onClick(View view) {
                 String text = ttsText.getText().toString();
                 if(text.length() > 0){
-                    /*
-                    mSeekBarPitch = findViewById(R.id.seek_bar_pitch);
-                    mSeekBarSpeed = findViewById(R.id.seek_bar_speed);
-                    float pitch = (float) mSeekBarPitch.getProgress() / 50;
-                    if (pitch < 0.1) pitch = 0.1f;
-                    float speed = (float) mSeekBarSpeed.getProgress() / 50;
-                    if (speed < 0.1) speed = 0.1f;
-                    textToSpeech.setPitch(pitch);
-                    textToSpeech.setSpeechRate(speed);
-                    */
                     textToSpeech.setLanguage(new Locale("et-EE"));
                     textToSpeech.speak(text,TextToSpeech.QUEUE_ADD, null);
                 }
