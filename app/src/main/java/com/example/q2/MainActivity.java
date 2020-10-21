@@ -183,14 +183,12 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             @Override
             public void onClick(View view) {
                 mLayout2.setVisibility(View.VISIBLE);
-                //mLayout1.setVisibility(View.INVISIBLE);
             }
         });
 
         findViewById(R.id.button_back_main).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mLayout1.setVisibility(View.VISIBLE);
                 mLayout2.setVisibility(View.INVISIBLE);
             }
         });

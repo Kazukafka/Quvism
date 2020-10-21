@@ -7,15 +7,14 @@
     android:layout_height="300dp"
     android:background="#fde"
     tools:context=".MainActivity"
-    android:layout_gravity="bottom"
-    >
+    android:layout_gravity="bottom" >
 
 
     <Button
         android:id="@+id/button222"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="OK"
         tools:layout_editor_absoluteX="26dp"
         tools:layout_editor_absoluteY="33dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
