@@ -81,15 +81,16 @@ public class ShowActivity extends AppCompatActivity {
 
         ListView list = (ListView)findViewById(R.id.listView);
         ArrayList labelList = new ArrayList();
-        for(int i=1; i<=20; i++){
-            for (int l = 0; l < cursor.getCount(); l++) {
-                stringbuilder.append(cursor.getString(0));
-                stringbuilder.append(": ");
-                stringbuilder.append(cursor.getString(1));
-                stringbuilder.append("\n");
-                cursor.moveToNext();
+
+        for (int l = 0; l < cursor.getCount(); l++) {
+            stringbuilder.append(cursor.getString(0));
+            stringbuilder.append(": ");
+            stringbuilder.append(cursor.getString(1));
+            stringbuilder.append("\n");
+            cursor.moveToNext();
+            for(int i=1; i<=20; i++){
+                labelList.add("List Item "+i);
             }
-            labelList.add("List Item "+i);
         }
 
         CustomAdapter mAdapter = new CustomAdapter(this, 0, labelList);
