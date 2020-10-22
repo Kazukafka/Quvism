@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     private TestOpenHelper helper;
     private SQLiteDatabase db;
 
-    private LinearLayout mLayout2;
     private LinearLayout mLayout1;
+    private LinearLayout mLayout2;
 
     int MY_DATA_CHECK_CODE = 1000;
     TextToSpeech textToSpeech;
@@ -272,7 +272,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     }
 
     public void showNextQuiz() {
-        //Reflesh quizCount
+        //Refresh quizCount
         countLabel.setText(getString(R.string.quiz_count, qCount));
         //Ged Random numbers
         Random random = new Random();

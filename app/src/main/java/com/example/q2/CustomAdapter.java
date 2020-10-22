@@ -52,7 +52,7 @@ public class CustomAdapter extends ArrayAdapter<String> {
         if (position % 2 == 0) {
             holder.labelText.setBackgroundColor(Color.parseColor("#aa0000"));
         } else {
-            holder.labelText.setBackgroundColor(Color.parseColor("#880000"));
+            holder.labelText.setBackgroundColor(Color.parseColor("#696969"));
         }
         //Get the Animation from XML file
         Animation anim = AnimationUtils.loadAnimation(getContext(), R.anim.item_motion);
