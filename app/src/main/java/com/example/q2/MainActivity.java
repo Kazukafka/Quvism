@@ -1,5 +1,7 @@
 package com.example.q2;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -118,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         MobileAds.initialize(this,
                 "ca-app-pub-6500766760315589~2685471571");
 
-        AdView adViewOne = findViewById(R.id.adView1);
+        AdView adViewOne = findViewById(R.id.adView);
         AdRequest adRequest1 = new AdRequest.Builder().build();
         adViewOne.loadAd(adRequest1);
 
