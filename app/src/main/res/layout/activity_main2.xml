@@ -128,16 +128,18 @@
             </LinearLayout>
 
             <!--            Advertisement Place -->
+
+            <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
             <com.google.android.gms.ads.AdView
-                android:id="@+id/adView1"
+                android:id="@+id/adView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:gravity="bottom"
+                android:layout_alignParentBottom="true"
                 ads:adSize="BANNER"
-                ads:adUnitId="ca-app-pub-3940256099942544/6300978111"></com.google.android.gms.ads.AdView>
+                ads:adUnitId="ca-app-pub-6500766760315589~2685471571">
+            </com.google.android.gms.ads.AdView>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/layout2"
@@ -201,14 +203,11 @@
                         android:textSize="25sp"
                         android:textColor="#ffffff"/>
 
-                    <Switch
-                        android:id="@+id/switch1"
-                        android:switchMinWidth="20dp"
+                    <com.google.android.material.switchmaterial.SwitchMaterial
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
+                        android:layout_height="match_parent"
                         android:checked="true"
-                        android:showText="true" />
+                        android:text="Test"/>
                 </LinearLayout>
             </LinearLayout>
 
