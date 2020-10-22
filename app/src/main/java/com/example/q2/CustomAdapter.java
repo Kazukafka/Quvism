@@ -24,7 +24,7 @@ public class CustomAdapter extends ArrayAdapter<String> {
 
     //Constractor
     public CustomAdapter(Context context, int textViewResourceId, ArrayList<String> labelList) {
-        super(context,textViewResourceId, labelList);
+        super(context, textViewResourceId, labelList);
     }
 
     @Override
@@ -33,9 +33,9 @@ public class CustomAdapter extends ArrayAdapter<String> {
         View view = convertView;
         //If you use the view again, do not make it again
         if (view == null) {
-            inflater =  (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.item_layout, null);
-            TextView label = (TextView)view.findViewById(R.id.tv);
+            TextView label = (TextView) view.findViewById(R.id.tv);
             holder = new ViewHolder();
             holder.labelText = label;
             view.setTag(holder);
@@ -50,9 +50,9 @@ public class CustomAdapter extends ArrayAdapter<String> {
             holder.labelText.setText(str);
         }
         //Change the BackGrounf Coloe
-        if(position%2==0){
+        if (position % 2 == 0) {
             holder.labelText.setBackgroundColor(Color.parseColor("#aa0000"));
-        }else{
+        } else {
             holder.labelText.setBackgroundColor(Color.parseColor("#880000"));
         }
         //Get the Animation from XML file

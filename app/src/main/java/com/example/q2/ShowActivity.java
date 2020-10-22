@@ -10,7 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class ShowActivity extends AppCompatActivity {
 
@@ -34,12 +37,7 @@ public class ShowActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                helper = new TestOpenHelper(getApplicationContext());
-                db = helper.getReadableDatabase();
-                db.delete("testdbdb", null, new String[]{});
-                readData();
-                //clearDatabase("testdbdb");
+                clearDatabase("testdbdb");
             }
         });
     }
@@ -61,25 +59,13 @@ public class ShowActivity extends AppCompatActivity {
                 null,
                 null
         );
-
         cursor.moveToFirst();
-
-        StringBuilder sbuilder = new StringBuilder();
-
-        for (int i = 0; i < cursor.getCount(); i++) {
-            sbuilder.append(cursor.getString(0));
-            sbuilder.append(": ");
-            sbuilder.append(cursor.getString(1));
-            sbuilder.append("\n");
-            cursor.moveToNext();
-        }
-
-        // 忘れずに！
+        StringBuilder stringbuilder = new StringBuilder();
         cursor.close();
 
         TextView textView = findViewById(R.id.text_view);
-        Log.d("debug","**********"+sbuilder.toString());
-        textView.setText(sbuilder.toString());
+        Log.d("debug","**********"+stringbuilder.toString());
+        textView.setText(stringbuilder.toString());
     }
 
     public void clearDatabase(String TABLE_NAME) {

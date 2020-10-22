@@ -22,11 +22,9 @@ public class ResultActivity extends AppCompatActivity {
         //Get number of correct answers
         int score = getIntent().getIntExtra("Count_right_ans", 0);
 
-
         //Read & show the total score
         SharedPreferences prefs = getSharedPreferences("Quvism", Context.MODE_PRIVATE);
         int totalSco = prefs.getInt("tScore", 0);
-
 
         //Add this score to the total score
         totalSco += score;

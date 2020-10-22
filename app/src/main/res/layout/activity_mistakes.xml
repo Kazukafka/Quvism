@@ -6,11 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".MistakesActivity">
 
-    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/listView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </ListView>
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:context=".MainActivity"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="-62dp">
+
+        <Button
+            android:id="@+id/button_read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Read"
+            tools:layout_editor_absoluteX="260dp"
+            tools:layout_editor_absoluteY="667dp" />
+
+        <Button
+            android:id="@+id/button_read2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            tools:layout_editor_absoluteX="33dp"
+            tools:layout_editor_absoluteY="667dp" />
+
+        <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="650dp" >
+
+        </ListView>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
