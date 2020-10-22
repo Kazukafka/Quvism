@@ -29,6 +29,14 @@ public class ShowActivity extends AppCompatActivity {
                 readData();
             }
         });
+
+        Button deleteButton = findViewById(R.id.button_read2);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.delete("company", "stockprice=?", new String[]{});
+            }
+        });
     }
 
     public void readData(){
