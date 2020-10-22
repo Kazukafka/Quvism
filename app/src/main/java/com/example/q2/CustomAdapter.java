@@ -17,7 +17,6 @@ public class CustomAdapter extends ArrayAdapter<String> {
 
     static class ViewHolder {
         TextView labelText;
-
     }
 
     private LayoutInflater inflater;

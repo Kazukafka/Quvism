@@ -23,7 +23,7 @@ public class ShowActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show);
+        setContentView(R.layout.activity_mistakes);
 
         Button readButton = findViewById(R.id.button_read);
         readButton.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +38,7 @@ public class ShowActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 clearDatabase("testdbdb");
+                readData();
             }
         });
     }
@@ -59,10 +60,10 @@ public class ShowActivity extends AppCompatActivity {
                 null,
                 null
         );
-
         cursor.moveToFirst();
         StringBuilder stringbuilder = new StringBuilder();
 
+        /*
         for (int i = 0; i < cursor.getCount(); i++) {
             stringbuilder.append(cursor.getString(0));
             stringbuilder.append(": ");
@@ -70,11 +71,30 @@ public class ShowActivity extends AppCompatActivity {
             stringbuilder.append("\n");
             cursor.moveToNext();
         }
+        //Never Forget
         cursor.close();
 
         TextView textView = findViewById(R.id.text_view);
         Log.d("debug","**********"+stringbuilder.toString());
         textView.setText(stringbuilder.toString());
+         */
+
+        ListView list = (ListView)findViewById(R.id.listView);
+        ArrayList labelList = new ArrayList();
+        for(int i=1; i<=20; i++){
+            for (int l = 0; l < cursor.getCount(); l++) {
+                stringbuilder.append(cursor.getString(0));
+                stringbuilder.append(": ");
+                stringbuilder.append(cursor.getString(1));
+                stringbuilder.append("\n");
+                cursor.moveToNext();
+            }
+            labelList.add("List Item "+i);
+        }
+
+        CustomAdapter mAdapter = new CustomAdapter(this, 0, labelList);
+        list.setAdapter(mAdapter);
+        list.setDivider(null);
     }
 
     public void clearDatabase(String TABLE_NAME) {

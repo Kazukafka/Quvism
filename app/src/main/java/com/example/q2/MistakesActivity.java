@@ -13,9 +13,6 @@ import java.util.ArrayList;
 
 public class MistakesActivity extends AppCompatActivity {
 
-    public TestOpenHelper helper;
-    public SQLiteDatabase db;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
