@@ -40,7 +40,7 @@ public class ResultActivity extends AppCompatActivity {
         editor.putInt("tScore", totalSco);
         editor.apply();
 
-        Button btn = findViewById(R.id.button999);
+        Button btn = findViewById(R.id.buttonTest);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

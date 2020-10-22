@@ -5,12 +5,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
 public class MistakesActivity extends AppCompatActivity {
+
+    public TestOpenHelper helper;
+    public SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -13,13 +13,13 @@ public class TestOpenHelper extends SQLiteOpenHelper {
     //Name of DataBase
     public static final String DATABASE_NAME = "TestDB.db";
     public static final String TABLE_NAME = "testdb";
-    public static final String _ID = "_id";
+    //public static final String _ID = "_id";
     public static final String COLUMN_NAME_TITLE = "company";
     public static final String COLUMN_NAME_SUBTITLE = "stockprice";
 
     public static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + TABLE_NAME + " (" +
-                    _ID + " INTEGER PRIMARY KEY," +
+                    //ID + " INTEGER PRIMARY KEY," +
                     COLUMN_NAME_TITLE + " TEXT," +
                     COLUMN_NAME_SUBTITLE + " TEXT)";
 
@@ -29,20 +29,16 @@ public class TestOpenHelper extends SQLiteOpenHelper {
 
     TestOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         //Make Table
         //If there is no SQLfile, then make it!
         db.execSQL(
                 SQL_CREATE_ENTRIES
         );
-
         Log.d("debug", "onCreate(SQLiteDatabase db)");
-
     }
 
     @Override

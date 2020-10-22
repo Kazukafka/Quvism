@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -153,11 +155,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         });
 
         ImageButton speakbutton;
-
         textToSpeech = new TextToSpeech(getApplicationContext(), this);
-
         ImageButton button_fragment = findViewById(R.id.image_button_check);
-
         mLayout1 = (LinearLayout)findViewById(R.id.layout1);
         mLayout2 = (LinearLayout)findViewById(R.id.layout2);
 
@@ -167,10 +166,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                 public void onClick(View view){
                     FragmentManager fragmentManager1 = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager1.beginTransaction();
-
                     //Set BackStack
                     fragmentTransaction.addToBackStack(null);
-
                     //Set the Parameter
                     fragmentTransaction.replace(R.id.container,
                             TestFragment.newInstance("Fragment"));
@@ -179,15 +176,12 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
             });
         }
-
-
         findViewById(R.id.image_button_setting).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mLayout2.setVisibility(View.VISIBLE);
             }
         });
-
         findViewById(R.id.button_back_main).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -219,6 +213,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         });
 
         bbreset = (Button) findViewById(R.id.resetPS);
+        //switchSheet = (Switch) findViewById(R.id.switchSheet);
         bbreset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -240,23 +235,18 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
         //Make questionArray from qDB
         for (String[] quizDatum : qDB1) {
-
             //Prepare the nw array
             ArrayList<String> tmpArray = new ArrayList<>();
-
             //Add QuestionData
             tmpArray.add(quizDatum[0]);
             tmpArray.add(quizDatum[1]);
             tmpArray.add(quizDatum[2]);
             tmpArray.add(quizDatum[3]);
             tmpArray.add(quizDatum[4]);
-
             //Add tmpArray to the questionArray
             questionArray1.add(tmpArray);
         }
-
         showNextQuiz();
-
     }
 
     @Override
@@ -284,74 +274,55 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     public void showNextQuiz() {
         //Reflesh quizCount
         countLabel.setText(getString(R.string.quiz_count, qCount));
-
         //Ged Random numbers
         Random random = new Random();
         int randomNum = random.nextInt(questionArray1.size());
-
         //Get one from questionArray by using randomNum
         ArrayList<String> question = questionArray1.get(randomNum);
-
-
         //Show the question
         questionLabel.setText(question.get(0));
-
         //set the right answer
         rightAnswer = question.get(1);
-
         //Deleter pre-question
         question.remove(0);
-
         //Shuffle
         Collections.shuffle(question);
-
         // Show the buttons
         answerBtn1.setText(question.get(0));
         answerBtn2.setText(question.get(1));
         answerBtn3.setText(question.get(2));
         answerBtn4.setText(question.get(3));
-
         //Delete question from this array
         questionArray1.remove(randomNum);
     }
-
     //InsertDate method
     private void insertData(SQLiteDatabase db, String com, String price){
-
         ContentValues values = new ContentValues();
         values.put("company", com);
         values.put("stockprice", price);
-
         db.insert("testdb", null, values);
     }
 
-
     public void checkAnswer(View view) {
-
         //Which button has been pushed ?
         Button answerBtn = findViewById(view.getId());
         String btnText = answerBtn.getText().toString();
-
         String alertTitle;
         if (btnText.equals(rightAnswer)) {
             alertTitle = "Correct!";
             rightAnswerCount++;
         } else {
             alertTitle = "Wrong...";
-
             //If the Answer is wrong, correct mistakes to the SQLite here
             //This DB will be shown in the MistakeActivity in ListView
             if(helper == null){
                 helper = new TestOpenHelper(getApplicationContext());
             }
-
             if(db == null){
                 db = helper.getWritableDatabase();
             }
-
             String key = questionLabel.getText().toString();
             String value = rightAnswer;
-
             insertData(db, key, value);
         }
 

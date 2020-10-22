@@ -35,12 +35,10 @@ public class ShowActivity extends AppCompatActivity {
         if(helper == null){
             helper = new TestOpenHelper(getApplicationContext());
         }
-
         if(db == null){
             db = helper.getReadableDatabase();
         }
         Log.d("debug","**********Cursor");
-
         Cursor cursor = db.query(
                 "testdb",
                 new String[] { "company", "stockprice" },
@@ -58,7 +56,7 @@ public class ShowActivity extends AppCompatActivity {
         for (int i = 0; i < cursor.getCount(); i++) {
             sbuilder.append(cursor.getString(0));
             sbuilder.append(": ");
-            sbuilder.append(cursor.getInt(1));
+            sbuilder.append(cursor.getString(1));
             sbuilder.append("\n");
             cursor.moveToNext();
         }
