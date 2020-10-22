@@ -35,8 +35,8 @@
 
         <TextView
             android:id="@+id/text_view"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
             android:textSize="32sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

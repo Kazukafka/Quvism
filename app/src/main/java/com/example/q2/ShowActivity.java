@@ -59,8 +59,17 @@ public class ShowActivity extends AppCompatActivity {
                 null,
                 null
         );
+
         cursor.moveToFirst();
         StringBuilder stringbuilder = new StringBuilder();
+
+        for (int i = 0; i < cursor.getCount(); i++) {
+            stringbuilder.append(cursor.getString(0));
+            stringbuilder.append(": ");
+            stringbuilder.append(cursor.getString(1));
+            stringbuilder.append("\n");
+            cursor.moveToNext();
+        }
         cursor.close();
 
         TextView textView = findViewById(R.id.text_view);
