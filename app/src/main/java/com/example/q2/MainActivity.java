@@ -298,9 +298,9 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     //InsertDate method
     private void insertData(SQLiteDatabase db, String com, String price){
         ContentValues values = new ContentValues();
-        values.put("company", com);
-        values.put("stockprice", price);
-        db.insert("testdb", null, values);
+        values.put("estonian", com);
+        values.put("english", price);
+        db.insert("testdbdb", null, values);
     }
 
     public void checkAnswer(View view) {

@@ -34,7 +34,12 @@ public class ShowActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.delete("company", "stockprice=?", new String[]{});
+
+                helper = new TestOpenHelper(getApplicationContext());
+                db = helper.getReadableDatabase();
+                db.delete("testdbdb", null, new String[]{});
+                readData();
+                //clearDatabase("testdbdb");
             }
         });
     }
@@ -48,8 +53,8 @@ public class ShowActivity extends AppCompatActivity {
         }
         Log.d("debug","**********Cursor");
         Cursor cursor = db.query(
-                "testdb",
-                new String[] { "company", "stockprice" },
+                "testdbdb",
+                new String[] { "estonian", "english" },
                 null,
                 null,
                 null,
@@ -75,5 +80,10 @@ public class ShowActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.text_view);
         Log.d("debug","**********"+sbuilder.toString());
         textView.setText(sbuilder.toString());
+    }
+
+    public void clearDatabase(String TABLE_NAME) {
+        String clearDBQuery = "DELETE FROM "+ "testdbdb";
+        db.execSQL(clearDBQuery);
     }
 }
