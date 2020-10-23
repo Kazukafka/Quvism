@@ -6,4 +6,5 @@
 
     <color name="alertBlue">#4a8af5</color>
     <color name="alertRed">#ff0000</color>
+    <color name="alertGreen">#008000</color>
 </resources>

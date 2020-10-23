@@ -311,7 +311,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
         if (btnText.equals(rightAnswer)) {
             alertTitle = "Correct!";
-            titleView.setBackgroundColor(getResources().getColor(R.color.alertBlue));
+            titleView.setBackgroundColor(getResources().getColor(R.color.alertGreen));
             rightAnswerCount++;
         } else {
             alertTitle = "Wrong...";
@@ -327,6 +327,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             insertData(db, key, value);
         }
 
+        //↓These Lines must be under If Statement
         titleView.setText(alertTitle);
         titleView.setTextSize(24);
         titleView.setTextColor(Color.WHITE);
@@ -336,7 +337,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         TextView msgView = new TextView(this);
         msgView.setText("Answer : " + rightAnswer);
         msgView.setTextSize(24);
-        //msgView.setBackgroundColor(Color.RED);
         msgView.setTextColor(Color.BLACK);
         msgView.setPadding(20, 20, 40, 20);
 
@@ -360,35 +360,5 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                 .show();
         dLog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.WHITE);
         dLog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(R.color.alertBlue));
-
-
-        /*
-        //Create dialog
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCustomTitle(titleView);
-        builder.setView(msgView);
-        builder.setTitle(alertTitle);
-        builder.setMessage("Answer : " + rightAnswer);
-
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (qCount == QUIZ_COUNT) {
-                    //Move to the resultActivity
-                    Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
-                    intent.putExtra("Count_right_ans", rightAnswerCount);
-                    startActivity(intent);
-                } else {
-                    qCount++;
-                    showNextQuiz();
-                }
-            }
-
-        });
-
-        builder.setCancelable(false);
-        builder.show();
-
-         */
     }
 }
