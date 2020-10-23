@@ -306,12 +306,16 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         //To show which button has been pushed
         Button answerBtn = findViewById(view.getId());
         String btnText = answerBtn.getText().toString();
-        String alertTitle;
+        String alertTitle="";
+        TextView titleView = new TextView(this);
+
         if (btnText.equals(rightAnswer)) {
             alertTitle = "Correct!";
+            titleView.setBackgroundColor(getResources().getColor(R.color.alertBlue));
             rightAnswerCount++;
         } else {
             alertTitle = "Wrong...";
+            titleView.setBackgroundColor(getResources().getColor(R.color.alertRed));
             if(helper == null){
                 helper = new TestOpenHelper(getApplicationContext());
             }
@@ -323,11 +327,9 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             insertData(db, key, value);
         }
 
-        TextView titleView = new TextView(this);
         titleView.setText(alertTitle);
         titleView.setTextSize(24);
         titleView.setTextColor(Color.WHITE);
-        titleView.setBackgroundColor(getResources().getColor(R.color.alertBlue));
         titleView.setPadding(20, 20, 20, 20);
         titleView.setGravity(Gravity.CENTER);
 
