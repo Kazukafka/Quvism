@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MistakesActivity"
-    android:background="#b0c4de">
+    android:background="@color/royalBlue">
 
     <LinearLayout
         android:id="@+id/layout2"
@@ -32,9 +32,18 @@
             android:text="Delete"
             tools:layout_editor_absoluteX="33dp"
             tools:layout_editor_absoluteY="667dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/resetShAc"
+            android:textSize="50dp"
+            android:textAlignment="center"/>
+
     </LinearLayout>
 
     <LinearLayout
+        android:background="@color/resetBlue"
         android:id="@+id/layout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -24,17 +24,10 @@ public class ShowActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mistakes);
 
-        //showLayout1 = (LinearLayout)findViewById(R.id.layout1);
-        //showLayout2 = (LinearLayout)findViewById(R.id.layout2);
-
-        //showLayout1.setVisibility(View.VISIBLE);
-        //showLayout2.setVisibility(View.INVISIBLE);
-
         final Button readButton = findViewById(R.id.button_read);
         readButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 readData();
             }
         });
@@ -44,12 +37,11 @@ public class ShowActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 clearDatabase("testdbdb");
-                //readButton.setVisibility(View.GONE);
-                //list.setVisibility(View.GONE);
                 showLayout1 = (LinearLayout)findViewById(R.id.layout1);
-                //showLayout2 = (LinearLayout)findViewById(R.id.layout2);
-                showLayout1.setVisibility(View.INVISIBLE);
-                //showLayout2.setVisibility(View.VISIBLE);
+                //↓Layout2 must be defined here
+                showLayout2 = (LinearLayout)findViewById(R.id.layout2);
+                showLayout1.setVisibility(View.GONE);
+
             }
         });
     }
