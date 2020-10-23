@@ -33,7 +33,7 @@ public class CustomAdapter extends ArrayAdapter<String> {
         //If you use the view again, do not make it again
         if (view == null) {
             inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.item_layout, null);
+            view = inflater.inflate(R.layout.show_layout, null);
             TextView label = (TextView) view.findViewById(R.id.tv);
             holder = new ViewHolder();
             holder.labelText = label;
@@ -48,16 +48,16 @@ public class CustomAdapter extends ArrayAdapter<String> {
             //Set the label on the textView
             holder.labelText.setText(str);
         }
-        //Change the BackGrounf Coloe
+        //Change the BackGrounf Color
         if (position % 2 == 0) {
             holder.labelText.setBackgroundColor(Color.parseColor("#aa0000"));
         } else {
             holder.labelText.setBackgroundColor(Color.parseColor("#696969"));
         }
         //Get the Animation from XML file
-        Animation anim = AnimationUtils.loadAnimation(getContext(), R.anim.item_motion);
+        Animation anime = AnimationUtils.loadAnimation(getContext(), R.anim.item_motion);
         //Start The Anime
-        view.startAnimation(anim);
+        view.startAnimation(anime);
 
         return view;
     }

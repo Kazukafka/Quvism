@@ -38,7 +38,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
-                app:lottie_rawRes="@raw/xxx" />
+                app:lottie_rawRes="@raw/restart" />
 
             <TextView
                 android:id="@+id/welcometxt"

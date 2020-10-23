@@ -21,7 +21,7 @@ public class MistakesActivity extends AppCompatActivity {
         ListView list = (ListView)findViewById(R.id.listView);
         ArrayList labelList = new ArrayList();
         for(int i=1; i<=20; i++){
-            labelList.add("List Item "+i);
+            labelList.add("NO ITEMS YET"+i);
         }
 
         CustomAdapter mAdapter = new CustomAdapter(this, 0, labelList);

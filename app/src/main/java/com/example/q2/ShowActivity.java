@@ -57,14 +57,25 @@ public class ShowActivity extends AppCompatActivity {
     }
 
     public void readData(){
+
+        ListView list = findViewById(R.id.listView);
+        ArrayList labelList = new ArrayList();
+
+        CustomAdapter mAdapter = new CustomAdapter(this, 0, labelList);
+        list.setAdapter(mAdapter);
+        list.setDivider(null);
+
         if(helper == null){
             helper = new TestOpenHelper(getApplicationContext());
         }
         if(db == null){
             db = helper.getReadableDatabase();
+            for(int i=1; i<=20; i++){
+                labelList.add("NO ITEMS YET"+i);
+            }
         }
         Log.d("debug","**********Cursor");
-        Cursor cursor = db.query(
+        Cursor cur = db.query(
                 "testdbdb",
                 new String[] { "estonian", "english" },
                 null,
@@ -73,28 +84,15 @@ public class ShowActivity extends AppCompatActivity {
                 null,
                 null
         );
-        cursor.moveToFirst();
-        StringBuilder stringbuilder = new StringBuilder();
-        ListView list = (ListView)findViewById(R.id.listView);
-        ArrayList labelList = new ArrayList();
+        cur.moveToFirst();
+
         for(int i=1; i<=20; i++){
-            /*
-            stringbuilder.append(cursor.getString(0));
-            stringbuilder.append(": ");
-            stringbuilder.append(cursor.getString(1));
-            stringbuilder.append("\n");
-            cursor.moveToNext();
-             */
-            labelList.add(cursor.getString(0));
-            labelList.add(cursor.getString(1));
-            cursor.moveToNext();
+            labelList.add(cur.getString(0));
+            labelList.add(cur.getString(1));
+            cur.moveToNext();
         }
         //↓Never Forget to Close Cursor
-        cursor.close();
-
-        CustomAdapter mAdapter = new CustomAdapter(this, 0, labelList);
-        list.setAdapter(mAdapter);
-        list.setDivider(null);
+        cur.close();
     }
 
     public void clearDatabase(String TABLE_NAME) {
