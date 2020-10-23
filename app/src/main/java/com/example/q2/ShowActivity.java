@@ -1,20 +1,14 @@
 package com.example.q2;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.database.Cursor;
-import android.database.StaleDataException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
-
 import java.util.ArrayList;
 
 public class ShowActivity extends AppCompatActivity {
@@ -36,7 +30,7 @@ public class ShowActivity extends AppCompatActivity {
         //showLayout1.setVisibility(View.VISIBLE);
         //showLayout2.setVisibility(View.INVISIBLE);
 
-        Button readButton = findViewById(R.id.button_read);
+        final Button readButton = findViewById(R.id.button_read);
         readButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +44,8 @@ public class ShowActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 clearDatabase("testdbdb");
+                //readButton.setVisibility(View.GONE);
+                //list.setVisibility(View.GONE);
                 //showLayout1.setVisibility(View.INVISIBLE);
                 //showLayout2.setVisibility(View.VISIBLE);
             }
@@ -70,9 +66,6 @@ public class ShowActivity extends AppCompatActivity {
         }
         if(db == null){
             db = helper.getReadableDatabase();
-            for(int i=1; i<=20; i++){
-                labelList.add("NO ITEMS YET"+i);
-            }
         }
         Log.d("debug","**********Cursor");
         Cursor cur = db.query(
