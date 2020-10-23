@@ -13,9 +13,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -132,22 +134,18 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             public void onAdLoaded() {
                 Log.d("debug","Code to be executed when an ad finishes loading.");
             }
-
             @Override
             public void onAdFailedToLoad(int errorCode) {
                 Log.d("debug","Code to be executed when an ad request fails.");
             }
-
             @Override
             public void onAdOpened() {
                 Log.d("debug","Code to be executed when an ad opens an overlay that covers the screen.");
             }
-
             @Override
             public void onAdLeftApplication() {
                 Log.d("debug","Code to be executed when the user has left the app.");
             }
-
             @Override
             public void onAdClosed() {
                 Log.d("debug","Code to be executed when when the user is about to return to the app after tapping on an ad.");
@@ -261,7 +259,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                 intent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
                 startActivity(intent);
             }
-        }}
+        }
+    }
 
     public void onInit(int i) {
         if(i == textToSpeech.SUCCESS){
@@ -304,7 +303,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     }
 
     public void checkAnswer(View view) {
-        //Which button has been pushed ?
+        //To show which button has been pushed
         Button answerBtn = findViewById(view.getId());
         String btnText = answerBtn.getText().toString();
         String alertTitle;
@@ -313,8 +312,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             rightAnswerCount++;
         } else {
             alertTitle = "Wrong...";
-            //If the Answer is wrong, correct mistakes to the SQLite here
-            //This DB will be shown in the MistakeActivity in ListView
             if(helper == null){
                 helper = new TestOpenHelper(getApplicationContext());
             }
@@ -326,10 +323,51 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             insertData(db, key, value);
         }
 
+        TextView titleView = new TextView(this);
+        titleView.setText(alertTitle);
+        titleView.setTextSize(24);
+        titleView.setTextColor(Color.WHITE);
+        titleView.setBackgroundColor(getResources().getColor(R.color.alertBlue));
+        titleView.setPadding(20, 20, 20, 20);
+        titleView.setGravity(Gravity.CENTER);
+
+        TextView msgView = new TextView(this);
+        msgView.setText("Answer : " + rightAnswer);
+        msgView.setTextSize(24);
+        //msgView.setBackgroundColor(Color.RED);
+        msgView.setTextColor(Color.BLACK);
+        msgView.setPadding(20, 20, 40, 20);
+
+        AlertDialog dLog = new AlertDialog.Builder(this)
+                .setCustomTitle(titleView)
+                .setView(msgView)
+                .setPositiveButton("NEXT", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (qCount == QUIZ_COUNT) {
+                            //Move to the resultActivity
+                            Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+                            intent.putExtra("Count_right_ans", rightAnswerCount);
+                            startActivity(intent);
+                        } else {
+                            qCount++;
+                            showNextQuiz();
+                        }
+                    }
+                })
+                .show();
+        dLog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.WHITE);
+        dLog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(R.color.alertBlue));
+
+
+        /*
         //Create dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCustomTitle(titleView);
+        builder.setView(msgView);
         builder.setTitle(alertTitle);
         builder.setMessage("Answer : " + rightAnswer);
+
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -338,14 +376,17 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                     Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
                     intent.putExtra("Count_right_ans", rightAnswerCount);
                     startActivity(intent);
-
                 } else {
                     qCount++;
                     showNextQuiz();
                 }
             }
+
         });
+
         builder.setCancelable(false);
         builder.show();
+
+         */
     }
 }
