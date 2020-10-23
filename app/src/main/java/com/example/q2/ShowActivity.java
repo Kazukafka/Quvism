@@ -46,7 +46,9 @@ public class ShowActivity extends AppCompatActivity {
                 clearDatabase("testdbdb");
                 //readButton.setVisibility(View.GONE);
                 //list.setVisibility(View.GONE);
-                //showLayout1.setVisibility(View.INVISIBLE);
+                showLayout1 = (LinearLayout)findViewById(R.id.layout1);
+                //showLayout2 = (LinearLayout)findViewById(R.id.layout2);
+                showLayout1.setVisibility(View.INVISIBLE);
                 //showLayout2.setVisibility(View.VISIBLE);
             }
         });
