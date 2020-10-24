@@ -28,7 +28,14 @@ public class ShowActivity extends AppCompatActivity {
         readButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readData();
+                if(db == null){
+                    showLayout1 = (LinearLayout)findViewById(R.id.layout1);
+                    //↓Layout2 must be defined here
+                    showLayout2 = (LinearLayout)findViewById(R.id.layout2);
+                    showLayout1.setVisibility(View.GONE);
+                } else {
+                    readData();
+                }
             }
         });
 
@@ -51,10 +58,6 @@ public class ShowActivity extends AppCompatActivity {
         ListView list = findViewById(R.id.listView);
         ArrayList labelList = new ArrayList();
 
-        CustomAdapter mAdapter = new CustomAdapter(this, 0, labelList);
-        list.setAdapter(mAdapter);
-        list.setDivider(null);
-
         if(helper == null){
             helper = new TestOpenHelper(getApplicationContext());
         }
@@ -73,13 +76,17 @@ public class ShowActivity extends AppCompatActivity {
         );
         cur.moveToFirst();
 
-        for(int i=1; i<=20; i++){
+        for(int i=1; i<=5; i++){
             labelList.add(cur.getString(0));
             labelList.add(cur.getString(1));
             cur.moveToNext();
         }
         //↓Never Forget to Close Cursor
         cur.close();
+
+        CustomAdapter mAdapter = new CustomAdapter(this, 0, labelList);
+        list.setAdapter(mAdapter);
+        list.setDivider(null);
     }
 
     public void clearDatabase(String TABLE_NAME) {
