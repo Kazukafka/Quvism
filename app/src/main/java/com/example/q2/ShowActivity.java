@@ -2,13 +2,19 @@ package com.example.q2;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class ShowActivity extends AppCompatActivity {
@@ -71,13 +77,17 @@ public class ShowActivity extends AppCompatActivity {
                 null,
                 null
         );
+
+        //How many raw lines in the database?
+        int count = (int) DatabaseUtils.queryNumEntries(db, "pokemonDB");
         cur.moveToFirst();
 
-        for(int i=1; i<=20; i++){
+        for(int i=1; i<=count; i++){
             labelList.add(cur.getString(0));
             labelList.add(cur.getString(1));
             cur.moveToNext();
         }
+
         //↓Never Forget to Close Cursor
         cur.close();
 

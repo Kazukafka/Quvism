@@ -99,9 +99,9 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             {"Homseni!", "See you tomorrow", "ABC", "fine", "Soso"},
             {"Head ööd!", "Good night", "No", "Yes", "PPAP"},
             {"Tere tulemast!", "Welcome! (informal)", "Hell", "Yes", "It is easy"},
-            {"Tere tulemast tagasi!2", "Welcome back!", "OK", "left", "right"},
-            {"Tere tulemast tagasi!2", "Welcome back!", "OK", "left", "right"},
-            {"Tere tulemast tagasi!2", "Welcome back!", "OK", "left", "right"},
+            {"Tere tulemast tagasi!3", "Welcome back!", "OK", "left", "right"},
+            {"Tere tulemast tagasi!4", "Welcome back!", "OK", "left", "right"},
+            {"Tere tulemast tagasi!5", "Welcome back!", "OK", "left", "right"},
     };
 
 
