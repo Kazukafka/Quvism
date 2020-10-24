@@ -35,4 +35,16 @@ dependencies {
     implementation "com.airbnb.android:lottie:2.8.0"
 
     implementation 'com.google.android.gms:play-services-ads:18.3.0'
+
+    implementation ('com.mapbox.mapboxsdk:mapbox-android-sdk:6.5.0@aar')
+            {
+                transitive=true
+            }
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation:0.20.0'
+    implementation ('com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.20.0')
+            {
+                transitive = true
+            }
+    implementation 'com.google.android.gms:play-services-maps:16.0.0'
+    //implementation 'com.android.support:design:27.0.2'
 }

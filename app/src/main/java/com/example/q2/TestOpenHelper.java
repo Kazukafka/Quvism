@@ -11,8 +11,8 @@ public class TestOpenHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     //Name of DataBase
-    public static final String DATABASE_NAME = "TestDBdb.db";
-    public static final String TABLE_NAME = "testdbdb";
+    public static final String DATABASE_NAME = "pokemonDB.db";
+    public static final String TABLE_NAME = "pokemonDB";
     public static final String COLUMN_NAME_TITLE = "estonian";
     public static final String COLUMN_NAME_SUBTITLE = "english";
 

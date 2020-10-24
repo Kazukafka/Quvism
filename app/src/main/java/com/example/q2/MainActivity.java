@@ -290,7 +290,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         ContentValues values = new ContentValues();
         values.put("estonian", com);
         values.put("english", price);
-        db.insert("testdbdb", null, values);
+        db.insert("pokemonDB", null, values);
     }
 
     public void checkAnswer(View view) {

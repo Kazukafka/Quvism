@@ -28,11 +28,15 @@ public class ShowActivity extends AppCompatActivity {
         readButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                readData();
+                /*
                 if(db == null){
                     moveLayout();
                 } else {
                     readData();
                 }
+
+                 */
             }
         });
 
@@ -40,7 +44,7 @@ public class ShowActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clearDatabase("testdbdb");
+                clearDatabase("pokemonDB");
                 moveLayout();
             }
         });
@@ -59,7 +63,7 @@ public class ShowActivity extends AppCompatActivity {
         }
         Log.d("debug","**********Cursor");
         Cursor cur = db.query(
-                "testdbdb",
+                "pokemonDB",
                 new String[] { "estonian", "english" },
                 null,
                 null,
@@ -69,7 +73,7 @@ public class ShowActivity extends AppCompatActivity {
         );
         cur.moveToFirst();
 
-        for(int i=1; i<=5; i++){
+        for(int i=1; i<=20; i++){
             labelList.add(cur.getString(0));
             labelList.add(cur.getString(1));
             cur.moveToNext();
@@ -83,7 +87,7 @@ public class ShowActivity extends AppCompatActivity {
     }
 
     public void clearDatabase(String TABLE_NAME) {
-        String clearDBQuery = "DELETE FROM "+ "testdbdb";
+        String clearDBQuery = "DELETE FROM "+ "pokemonDB";
         db.execSQL(clearDBQuery);
     }
 
