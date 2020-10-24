@@ -29,10 +29,7 @@ public class ShowActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(db == null){
-                    showLayout1 = (LinearLayout)findViewById(R.id.layout1);
-                    //↓Layout2 must be defined here
-                    showLayout2 = (LinearLayout)findViewById(R.id.layout2);
-                    showLayout1.setVisibility(View.GONE);
+                    moveLayout();
                 } else {
                     readData();
                 }
@@ -44,11 +41,7 @@ public class ShowActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 clearDatabase("testdbdb");
-                showLayout1 = (LinearLayout)findViewById(R.id.layout1);
-                //↓Layout2 must be defined here
-                showLayout2 = (LinearLayout)findViewById(R.id.layout2);
-                showLayout1.setVisibility(View.GONE);
-
+                moveLayout();
             }
         });
     }
@@ -92,5 +85,12 @@ public class ShowActivity extends AppCompatActivity {
     public void clearDatabase(String TABLE_NAME) {
         String clearDBQuery = "DELETE FROM "+ "testdbdb";
         db.execSQL(clearDBQuery);
+    }
+
+    public void moveLayout() {
+        showLayout1 = (LinearLayout)findViewById(R.id.layout1);
+        //↓Layout2 must be defined here
+        showLayout2 = (LinearLayout)findViewById(R.id.layout2);
+        showLayout1.setVisibility(View.GONE);
     }
 }
