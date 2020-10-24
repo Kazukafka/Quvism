@@ -79,10 +79,10 @@ public class ShowActivity extends AppCompatActivity {
         );
 
         //How many raw lines in the database?
-        int count = (int) DatabaseUtils.queryNumEntries(db, "pokemonDB");
+        int rawCount = (int) DatabaseUtils.queryNumEntries(db, "pokemonDB");
         cur.moveToFirst();
 
-        for(int i=1; i<=count; i++){
+        for(int i=1; i<=rawCount; i++){
             labelList.add(cur.getString(0));
             labelList.add(cur.getString(1));
             cur.moveToNext();
