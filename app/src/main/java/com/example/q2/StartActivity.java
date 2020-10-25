@@ -1,8 +1,10 @@
 package com.example.q2;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
@@ -12,12 +14,11 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_start);
 
-        //Action Bar Customise Test
         getSupportActionBar().setTitle("Estonian");
-        //↓It does not work
-        //getSupportActionBar().setIcon(R.mipmap.ic_launcher_round);
 
         ImageButton imageButton1 = findViewById(R.id.image_button1);
         ImageButton imageButton2 = findViewById(R.id.image_button2);
