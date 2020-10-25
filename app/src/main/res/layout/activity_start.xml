@@ -51,11 +51,9 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="750dp"
         android:layout_gravity="bottom"
-
         android:background="@drawable/menu_2"
-
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -94,9 +92,7 @@
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_gravity="bottom"
-
         android:background="@drawable/menu_1"
-
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
