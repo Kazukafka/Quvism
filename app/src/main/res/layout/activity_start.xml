@@ -3,15 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#fafafa"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
-
         android:background="#f5deb3"
-
         android:layout_height="350dp"
         android:layout_width="match_parent">
 

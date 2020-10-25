@@ -1,7 +1,6 @@
 package com.example.q2;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +12,10 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        //Action Bar Customise Test
+        getSupportActionBar().setTitle("Estonian");
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher_round);
 
         ImageButton imageButton1 = findViewById(R.id.image_button1);
         ImageButton imageButton2 = findViewById(R.id.image_button2);
