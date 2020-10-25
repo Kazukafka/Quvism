@@ -16,7 +16,8 @@ public class StartActivity extends AppCompatActivity {
 
         //Action Bar Customise Test
         getSupportActionBar().setTitle("Estonian");
-        getSupportActionBar().setIcon(R.mipmap.ic_launcher_round);
+        //↓It does not work
+        //getSupportActionBar().setIcon(R.mipmap.ic_launcher_round);
 
         ImageButton imageButton1 = findViewById(R.id.image_button1);
         ImageButton imageButton2 = findViewById(R.id.image_button2);
