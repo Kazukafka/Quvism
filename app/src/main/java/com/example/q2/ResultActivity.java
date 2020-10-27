@@ -39,11 +39,19 @@ public class ResultActivity extends AppCompatActivity {
         editor.apply();
 
         Button btn = findViewById(R.id.buttonTest);
+        Button btn2 = findViewById(R.id.buttonRstart);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), ShowActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), StartActivity.class);
                 startActivity(intent);
             }
         });

@@ -2,7 +2,6 @@ package com.example.q2;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -25,6 +24,9 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.MobileAds;
+
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
@@ -65,8 +67,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     ArrayList<ArrayList<String>> questionArray1 = new ArrayList<>();
 
     //Test by SharedPriffferences
-    /*
-    String[][] qDB = {
+    String[][] qDB1 = {
             // {"Estonian", "RightAnswer", "Choice_1", "Choice _２", "Choice_３"}
             {"Tere", "Hello", "Thanks", "Oh my god", "No"},
             {"Aitah", "Thank you", "Yes", "Well Done", "Not really"},
@@ -77,18 +78,18 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             {"Homseni!", "See you tomorrow", "ABC", "fine", "Soso"},
             {"Head ööd!", "Good night", "No", "Yes", "PPAP"},
             {"Tere tulemast!", "Welcome! (informal)", "Hell", "Yes", "It is easy"},
-            {"Tere tulemast tagasi!2", "Welcome back!", "OK", "left", "right"},
-            {"Tere tulemast tagasi!2", "Welcome back!", "OK", "left", "right"},
-            {"Tere tulemast tagasi!2", "Welcome back!", "OK", "left", "right"},
-            {"Tere tulemast tagasi!3", "Welcome back!", "OK", "left", "right"},
-            {"Tere tulemast tagasi!3", "Welcome back!", "OK", "left", "right"},
-            {"Tere tulemast tagasi!3", "Welcome back!", "OK", "left", "right"},
-            {"Tere tulemast tagasi!3", "Welcome back!", "OK", "left", "right"},
-
+            {"Tere2", "Hello", "Thanks", "Oh my god", "No"},
+            {"Aitah2", "Thank you", "Yes", "Well Done", "Not really"},
+            {"Homikst2", "Morning","ABC", "Doremi", "Evening"},
+            {"Head ööd!2", "Good Evening", "How are you?", "Fine", "Soso"},
+            {"Nägemist!2", "Bye!","See you", "Good", "Never"},
+            {"Maga hästi!2", "Sleep well","Hey", "Never mind", "right"},
+            {"Homseni!2", "See you tomorrow", "ABC", "fine", "Soso"},
+            {"Head ööd!2", "Good night", "No", "Yes", "PPAP"},
+            {"Tere tulemast!2", "Welcome! (informal)", "Hell", "Yes", "It is easy"},
     };
 
-     */
-
+    /*
     String[][] qDB1 = {
             {"Tere", "Hello", "Thanks", "Oh my god", "No"},
             {"Aitah", "Thank you", "Yes", "Well Done", "Not really"},
@@ -103,6 +104,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             {"Tere tulemast tagasi!4", "Welcome back!", "OK", "left", "right"},
             {"Tere tulemast tagasi!5", "Welcome back!", "OK", "left", "right"},
     };
+
+     */
 
 
     @Override
