@@ -39,7 +39,7 @@ public class SplashActivity extends AppCompatActivity {
                 Animation.RELATIVE_TO_SELF,
                 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         // animation時間 msec
-        scaleAnimation.setDuration(1000);
+        scaleAnimation.setDuration(10000);
         // 繰り返し回数
         scaleAnimation.setRepeatCount(0);
         // animationが終わったそのまま表示にする

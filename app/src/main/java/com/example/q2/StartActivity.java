@@ -16,7 +16,7 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        getSupportActionBar().setTitle("Estonian");
+        //getSupportActionBar().setTitle("");
 
         ImageButton imageButton1 = findViewById(R.id.image_button1);
         ImageButton imageButton2 = findViewById(R.id.image_button2);

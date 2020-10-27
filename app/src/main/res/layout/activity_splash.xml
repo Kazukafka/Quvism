@@ -6,6 +6,7 @@
     tools:context=".SplashActivity"
     android:orientation="vertical">
     <LinearLayout
+        android:background="#fafafa"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -19,13 +20,4 @@
             android:src="@drawable/icon2">
         </ImageView>
     </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Version: 1.0.0"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:layout_marginVertical="20dp"
-        android:textStyle="italic">
-    </TextView>
 </LinearLayout>
