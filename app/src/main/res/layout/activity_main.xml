@@ -4,130 +4,244 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:background="#f5f5dc"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        tools:context=".MainActivity"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="-62dp">
-
-        <TextView
-            android:id="@+id/countLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="Q1"
-            android:textSize="22sp" />
-
-        <TextView
-            android:id="@+id/questionLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="Question"
-            android:textSize="40sp"
-            android:textAlignment="center" />
-
-        <Button
-            android:id="@+id/answerBtn1"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="80dp"
-
-            android:text="answer1"
-            android:textSize="30dp"
-            android:background="@drawable/btn_state"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:onClick="checkAnswer"/>
-
-        <Button
-            android:id="@+id/answerBtn2"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="6dp"
-
-            android:text="answer2"
-            android:textSize="30dp"
-            android:background="@drawable/btn_state"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:onClick="checkAnswer"/>
-
-        <Button
-            android:id="@+id/answerBtn3"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="6dp"
-
-            android:text="answer3"
-            android:textSize="30dp"
-            android:background="@drawable/btn_state"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:onClick="checkAnswer"/>
-
-        <Button
-            android:id="@+id/answerBtn4"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="6dp"
-
-            android:text="answer4"
-            android:textSize="30dp"
-            android:background="@drawable/btn_state"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:onClick="checkAnswer"/>
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="bottom"
-            android:orientation="horizontal"
-            android:paddingBottom="1dp">
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            tools:context=".MainActivity"
+            tools:layout_editor_absoluteX="39dp"
+            tools:layout_editor_absoluteY="-62dp">
 
-            <ImageButton
-                android:id="@+id/image_button_speak"
-                android:layout_width="50dp"
+            <TextView
+                android:id="@+id/countLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Q1"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/questionLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Question"
+                android:textSize="40sp"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/answerBtn1"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="80dp"
+                android:text="answer1"
+                android:textSize="30dp"
+                android:background="@drawable/btn_state"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:onClick="checkAnswer"/>
+
+            <Button
+                android:id="@+id/answerBtn2"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="6dp"
+                android:text="answer2"
+                android:textSize="30dp"
+                android:background="@drawable/btn_state"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:onClick="checkAnswer"/>
+
+            <Button
+                android:id="@+id/answerBtn3"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="6dp"
+                android:text="answer3"
+                android:textSize="30dp"
+                android:background="@drawable/btn_state"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:onClick="checkAnswer"/>
+
+            <Button
+                android:id="@+id/answerBtn4"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="6dp"
+                android:text="answer4"
+                android:textSize="30dp"
+                android:background="@drawable/btn_state"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:onClick="checkAnswer"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="1dp">
+
+                <ImageButton
+                    android:id="@+id/image_button_speak"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_round_speak" />
+
+                <ImageButton
+                    android:id="@+id/image_button_check"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_round_check" />
+
+                <ImageButton
+                    android:id="@+id/image_button_setting"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_round_setting" />
+
+            </LinearLayout>
+
+            <!--            Advertisement Place -->
+
+            <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/adView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                ads:adSize="BANNER"
+                ads:adUnitId="ca-app-pub-6500766760315589~2685471571">
+            </com.google.android.gms.ads.AdView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:background="#4169e1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="1dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="1dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pitch"
+                        android:textSize="25sp"
+                        android:textColor="#ffffff"/>
+
+                    <SeekBar
+                        android:id="@+id/seek_bar_pitch"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:progress="50" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Speed"
+                        android:textSize="25sp"
+                        android:textColor="#ffffff"/>
+
+                    <SeekBar
+                        android:id="@+id/seek_bar_speed"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:progress="50" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="210dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:orientation="horizontal"
+                        android:paddingBottom="1dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mode"
+                            android:textColor="#ffffff"
+                            android:textSize="25sp" />
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switchSheet"
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:checked="false" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/resetPS"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="right"
+                        android:layout_marginBottom="70dp"
+                        android:text="Reset" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_back_main"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_round_speak" />
-
-            <ImageButton
-                android:id="@+id/image_button_check"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_round_check" />
-
-            <ImageButton
-                android:id="@+id/image_button_setting"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_round_setting" />
-
+                android:layout_marginBottom="100dp"
+                android:text="OK" />
 
         </LinearLayout>
 
-    </LinearLayout>
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_gravity="top"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
 
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
