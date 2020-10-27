@@ -16,11 +16,8 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
         imageView = findViewById(R.id.image_view);
-
         startScaling();
-
         handler=new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -29,22 +26,22 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        },3000);
+        },12000);
     }
 
     private void startScaling(){
-        // ScaleAnimation(float fromX, float toX, float fromY, float toY, int pivotXType, float pivotXValue, int pivotYType, float pivotYValue)
-        ScaleAnimation scaleAnimation = new ScaleAnimation(
+        //(float fromX, float toX, float fromY, float toY, int pivotXType, float pivotXValue, int pivotYType, float pivotYValue)
+        ScaleAnimation scaleAnim = new ScaleAnimation(
                 1.0f, 4.0f, 1.0f,4.0f,
                 Animation.RELATIVE_TO_SELF,
                 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-        // animation時間 msec
-        scaleAnimation.setDuration(10000);
-        // 繰り返し回数
-        scaleAnimation.setRepeatCount(0);
-        // animationが終わったそのまま表示にする
-        scaleAnimation.setFillAfter(true);
-        //アニメーションの開始
-        imageView.startAnimation(scaleAnimation);
+        //time
+        scaleAnim.setDuration(10000);
+        //repeat
+        scaleAnim.setRepeatCount(0);
+        //Show it after
+        scaleAnim.setFillAfter(true);
+        //Begin
+        imageView.startAnimation(scaleAnim);
     }
 }

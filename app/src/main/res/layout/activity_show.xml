@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#dfe"
-    tools:context=".MistakesActivity">
+    tools:context=".ShowActivity">
 
     <LinearLayout
     android:layout_width="match_parent"

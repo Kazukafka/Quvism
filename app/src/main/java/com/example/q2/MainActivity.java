@@ -39,8 +39,9 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     private TestOpenHelper helper;
     private SQLiteDatabase db;
 
-    private LinearLayout mLayout1;
-    private LinearLayout mLayout2;
+    private LinearLayout kLayout1;
+    private LinearLayout kLayout2;
+    private LinearLayout kLayout3;
 
     int MY_DATA_CHECK_CODE = 1000;
     TextToSpeech textToSpeech;
@@ -148,10 +149,12 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
         ImageButton speakbutton;
         textToSpeech = new TextToSpeech(getApplicationContext(), this);
-        ImageButton button_fragment = findViewById(R.id.image_button_check);
-        mLayout1 = (LinearLayout)findViewById(R.id.layout1);
-        mLayout2 = (LinearLayout)findViewById(R.id.layout2);
+        //ImageButton button_fragment = findViewById(R.id.image_button_check);
+        kLayout1 = (LinearLayout)findViewById(R.id.layout1);
+        kLayout2 = (LinearLayout)findViewById(R.id.layout2);
+        kLayout3 = (LinearLayout)findViewById(R.id.layout3);
 
+        /*
         if(savedInstanceState == null){
             button_fragment.setOnClickListener(new View.OnClickListener(){
                 @Override
@@ -165,19 +168,26 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                             TestFragment.newInstance("Fragment"));
                     fragmentTransaction.commit();
                 }
-
             });
         }
+
+         */
+        findViewById(R.id.image_button_check).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                kLayout3.setVisibility(View.VISIBLE);
+            }
+        });
         findViewById(R.id.image_button_setting).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mLayout2.setVisibility(View.VISIBLE);
+                kLayout2.setVisibility(View.VISIBLE);
             }
         });
         findViewById(R.id.button_back_main).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mLayout2.setVisibility(View.INVISIBLE);
+                kLayout2.setVisibility(View.INVISIBLE);
             }
         });
 

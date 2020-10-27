@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".TestdbActivity" />
+        <activity android:name=".ShowActivity" />
         <activity android:name=".MistakesActivity" />
         <activity android:name=".StartActivity">
         </activity>

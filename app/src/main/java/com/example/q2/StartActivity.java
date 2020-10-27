@@ -10,13 +10,12 @@ import android.view.View;
 import android.widget.ImageButton;
 
 public class StartActivity extends AppCompatActivity {
+    private int dbNum = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-
-        //getSupportActionBar().setTitle("");
 
         ImageButton imageButton1 = findViewById(R.id.image_button1);
         ImageButton imageButton2 = findViewById(R.id.image_button2);
