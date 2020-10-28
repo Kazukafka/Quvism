@@ -18,9 +18,11 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.MobileAds;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     private LinearLayout kLayout1;
     private LinearLayout kLayout2;
     private LinearLayout kLayout3;
+    //Switch switchSheet = (Switch) findViewById(R.id.switchSheet);
 
     int MY_DATA_CHECK_CODE = 1000;
     TextToSpeech textToSpeech;
@@ -60,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     private SeekBar mSeekBarPitch;
     private SeekBar mSeekBarSpeed;
     private Button bbreset;
+    private Switch switchSheet;
 
     //Fragment Data Moveing 1) Create SP in Main 2) Call the sp in Fragmet 3) Edit sp in fragment 4) get data from SP in Main
     ArrayList<ArrayList<String>> questionArray1 = new ArrayList<>();
@@ -132,7 +136,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         kLayout2 = (LinearLayout)findViewById(R.id.layout2);
         kLayout3 = (LinearLayout)findViewById(R.id.layout3);
 
-
         /*
         if(savedInstanceState == null){
             button_fragment.setOnClickListener(new View.OnClickListener(){
@@ -151,18 +154,25 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         }
 
          */
+
+
         findViewById(R.id.redsh1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 kLayout3.setVisibility(View.INVISIBLE);
             }
         });
+
+
+/*
         findViewById(R.id.image_button_check).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 kLayout3.setVisibility(View.VISIBLE);
             }
         });
+
+         */
         findViewById(R.id.image_button_setting).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -178,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
         mSeekBarPitch = findViewById(R.id.seek_bar_pitch);
         mSeekBarSpeed = findViewById(R.id.seek_bar_speed);
-
+        switchSheet = (Switch) findViewById(R.id.switchSheet);
         //image_button_speak
         ttsText = (TextView) findViewById(R.id.questionLabel);
         speakbutton = (ImageButton) findViewById(R.id.image_button_speak);
@@ -200,12 +210,13 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         });
 
         bbreset = (Button) findViewById(R.id.resetPS);
-        //switchSheet = (Switch) findViewById(R.id.switchSheet);
+        //Switch switchSheet = (Switch) findViewById(R.id.switchSheet);
         bbreset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSeekBarPitch.setProgress(50);
                 mSeekBarSpeed.setProgress(50);
+                //switchSheet.setChecked(false);
             }
         });
 
@@ -238,7 +249,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == MY_DATA_CHECK_CODE) {
             if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS){
@@ -282,6 +292,20 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         answerBtn4.setText(question.get(3));
         //Delete question from this array
         questionArray1.remove(randomNum);
+        kLayout3.setVisibility(View.VISIBLE);
+
+        /*
+        CompoundButton toggle = (CompoundButton) findViewById(R.id.switchSheet);
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    kLayout3.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+         */
     }
     //InsertDate method
     private void insertData(SQLiteDatabase db, String com, String price){
