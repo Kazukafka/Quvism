@@ -95,12 +95,10 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         //Ad Place
         // Test App ID
         MobileAds.initialize(this,
                 "ca-app-pub-6500766760315589~2685471571");
-
         AdView adViewOne = findViewById(R.id.adView);
         AdRequest adRequest1 = new AdRequest.Builder().build();
         adViewOne.loadAd(adRequest1);
@@ -156,12 +154,15 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
          */
 
 
+        /*
         findViewById(R.id.redsh1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 kLayout3.setVisibility(View.INVISIBLE);
             }
         });
+
+         */
 
 
 /*
@@ -216,7 +217,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             public void onClick(View view) {
                 mSeekBarPitch.setProgress(50);
                 mSeekBarSpeed.setProgress(50);
-                //switchSheet.setChecked(false);
+                switchSheet.setChecked(false);
             }
         });
 
@@ -269,6 +270,34 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         }
     }
 
+    public int a = 1;
+    public void ssr(){
+        if (a == 2){
+            kLayout3.setVisibility(View.VISIBLE);
+        }
+    }
+
+
+    public void showRedSheet(){
+
+        CompoundButton toggle = (CompoundButton) findViewById(R.id.switchSheet);
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    kLayout3.setVisibility(View.VISIBLE);
+            }
+        }});
+
+        findViewById(R.id.redsh1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                kLayout3.setVisibility(View.INVISIBLE);
+                a = 2;
+            }
+        });
+    }
+
     public void showNextQuiz() {
         //Refresh quizCount
         countLabel.setText(getString(R.string.quiz_count, qCount));
@@ -292,20 +321,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         answerBtn4.setText(question.get(3));
         //Delete question from this array
         questionArray1.remove(randomNum);
-        kLayout3.setVisibility(View.VISIBLE);
-
-        /*
-        CompoundButton toggle = (CompoundButton) findViewById(R.id.switchSheet);
-        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    kLayout3.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-         */
+        ssr();
+        showRedSheet();
     }
     //InsertDate method
     private void insertData(SQLiteDatabase db, String com, String price){
@@ -366,6 +383,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                             startActivity(intent);
                         } else {
                             qCount++;
+                            ssr();
+                            showRedSheet();
                             showNextQuiz();
                         }
                     }
