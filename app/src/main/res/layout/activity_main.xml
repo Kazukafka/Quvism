@@ -208,13 +208,22 @@
 
         <LinearLayout
             android:visibility="invisible"
-            android:background="#000000"
+            android:background="#dc143c"
             android:id="@+id/layout3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="top"
+            android:layout_height="350dp"
+            android:layout_gravity="center"
             android:orientation="vertical"
             tools:context=".MainActivity">
+
+        <Button
+            android:id="@+id/redsh1"
+            android:background="#dc143c"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:onClick="checkAnswer"/>
         </LinearLayout>
         <FrameLayout
             android:id="@+id/container"

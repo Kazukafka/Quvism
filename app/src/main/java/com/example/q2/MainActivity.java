@@ -24,14 +24,11 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.MobileAds;
-
 import org.jetbrains.annotations.Nullable;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
 import java.util.Random;
-
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener{
 
@@ -90,25 +87,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             {"Tere tulemast!2", "Welcome! (informal)", "Hell", "Yes", "It is easy"},
     };
 
-    /*
-    String[][] qDB1 = {
-            {"Tere", "Hello", "Thanks", "Oh my god", "No"},
-            {"Aitah", "Thank you", "Yes", "Well Done", "Not really"},
-            {"Homikst", "Morning","ABC", "Doremi", "Evening"},
-            {"Head ööd!", "Good Evening", "How are you?", "Fine", "Soso"},
-            {"Nägemist!", "Bye!","See you", "Good", "Never"},
-            {"Maga hästi!", "Sleep well","Hey", "Never mind", "right"},
-            {"Homseni!", "See you tomorrow", "ABC", "fine", "Soso"},
-            {"Head ööd!", "Good night", "No", "Yes", "PPAP"},
-            {"Tere tulemast!", "Welcome! (informal)", "Hell", "Yes", "It is easy"},
-            {"Tere tulemast tagasi!3", "Welcome back!", "OK", "left", "right"},
-            {"Tere tulemast tagasi!4", "Welcome back!", "OK", "left", "right"},
-            {"Tere tulemast tagasi!5", "Welcome back!", "OK", "left", "right"},
-    };
-
-     */
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -154,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         kLayout2 = (LinearLayout)findViewById(R.id.layout2);
         kLayout3 = (LinearLayout)findViewById(R.id.layout3);
 
+
         /*
         if(savedInstanceState == null){
             button_fragment.setOnClickListener(new View.OnClickListener(){
@@ -172,6 +151,12 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         }
 
          */
+        findViewById(R.id.redsh1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                kLayout3.setVisibility(View.INVISIBLE);
+            }
+        });
         findViewById(R.id.image_button_check).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
