@@ -93,22 +93,22 @@
                 android:paddingBottom="1dp">
                 <ImageButton
                     android:id="@+id/image_button_speak"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/button_round_speak" />
                 <ImageButton
                     android:id="@+id/image_button_check"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/button_round_check" />
                 <ImageButton
                     android:id="@+id/image_button_setting"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/button_round_setting" />
@@ -215,14 +215,14 @@
             android:orientation="vertical"
             tools:context=".MainActivity">
 
-        <Button
-            android:id="@+id/redsh1"
-            android:background="@drawable/frame_redsheet"
-            android:layout_width="300dp"
-            android:layout_height="350dp"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:onClick="checkAnswer"/>
+            <Button
+                android:id="@+id/redsh1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:background="@drawable/frame_redsheet"
+                android:onClick="checkAnswer"
+                android:orientation="vertical" />
         </LinearLayout>
         <FrameLayout
             android:id="@+id/container"
