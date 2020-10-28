@@ -208,7 +208,6 @@
 
         <LinearLayout
             android:visibility="invisible"
-            android:background="#dc143c"
             android:id="@+id/layout3"
             android:layout_width="match_parent"
             android:layout_height="350dp"
@@ -218,8 +217,8 @@
 
         <Button
             android:id="@+id/redsh1"
-            android:background="#dc143c"
-            android:layout_width="match_parent"
+            android:background="@drawable/frame_redsheet"
+            android:layout_width="300dp"
             android:layout_height="350dp"
             android:layout_gravity="center"
             android:orientation="vertical"
