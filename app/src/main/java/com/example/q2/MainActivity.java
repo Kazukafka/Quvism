@@ -270,30 +270,32 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         }
     }
 
-    public int a = 1;
-    public void ssr(){
-        if (a == 2){
-            kLayout3.setVisibility(View.VISIBLE);
-        }
-    }
-
-
-    public void showRedSheet(){
-
+    public int hardModeNum = 1;
+    public void hardMode(){
         CompoundButton toggle = (CompoundButton) findViewById(R.id.switchSheet);
         toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     kLayout3.setVisibility(View.VISIBLE);
+                    hardModeNum = 2;
+                } else {
+                    kLayout3.setVisibility(View.INVISIBLE);
+                    hardModeNum = 1;
+                }
             }
-        }});
+        });
+
+        if (hardModeNum == 2){
+            kLayout3.setVisibility(View.VISIBLE);
+        } else {
+            kLayout3.setVisibility(View.INVISIBLE);
+        }
 
         findViewById(R.id.redsh1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 kLayout3.setVisibility(View.INVISIBLE);
-                a = 2;
             }
         });
     }
@@ -321,8 +323,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         answerBtn4.setText(question.get(3));
         //Delete question from this array
         questionArray1.remove(randomNum);
-        ssr();
-        showRedSheet();
+        hardMode();
     }
     //InsertDate method
     private void insertData(SQLiteDatabase db, String com, String price){
@@ -383,8 +384,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                             startActivity(intent);
                         } else {
                             qCount++;
-                            ssr();
-                            showRedSheet();
                             showNextQuiz();
                         }
                     }
