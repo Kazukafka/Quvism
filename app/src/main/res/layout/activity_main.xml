@@ -34,7 +34,6 @@
                 android:text="Question"
                 android:textSize="40sp"
                 android:textAlignment="center" />
-
             <Button
                 android:id="@+id/answerBtn1"
                 android:layout_width="match_parent"
@@ -178,7 +177,6 @@
                         android:layout_gravity="right"
                         android:orientation="horizontal"
                         android:paddingBottom="1dp">
-
                         <TextView
                             android:layout_gravity="right"
                             android:layout_width="wrap_content"
@@ -186,8 +184,6 @@
                             android:text="Easy"
                             android:textColor="#ffffff"
                             android:textSize="25sp" />
-
-
                         <Switch
                             android:layout_gravity="center_vertical"
                             android:id="@+id/switchSheet"
@@ -195,7 +191,6 @@
                             android:layout_height="40dp"
                             android:checked="false"
                              />
-
                         <TextView
                             android:layout_gravity="right"
                             android:layout_width="wrap_content"
@@ -203,7 +198,6 @@
                             android:text="Hard"
                             android:textColor="#ffffff"
                             android:textSize="25sp" />
-
                     </LinearLayout>
                     <Button
                         android:id="@+id/resetPS"
@@ -233,6 +227,9 @@
 
             <Button
                 android:id="@+id/redsh1"
+                android:text="Tap To See"
+                android:textSize="40dp"
+                android:textColor="@color/tapToShow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
