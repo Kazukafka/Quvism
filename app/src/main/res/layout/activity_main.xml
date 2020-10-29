@@ -34,6 +34,7 @@
                 android:text="Question"
                 android:textSize="40sp"
                 android:textAlignment="center" />
+
             <Button
                 android:id="@+id/answerBtn1"
                 android:layout_width="match_parent"

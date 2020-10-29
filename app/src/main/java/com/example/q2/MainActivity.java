@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -24,6 +25,8 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.MobileAds;
 import org.jetbrains.annotations.Nullable;
@@ -31,6 +34,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
 import java.util.Random;
+import java.util.Timer;
+import java.util.logging.Handler;
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener{
 
@@ -48,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
     private TextView countLabel;
     private TextView questionLabel;
+    private String hintQuestioLavel;
     private Button answerBtn1;
     private Button answerBtn2;
     private Button answerBtn3;
@@ -129,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
         ImageButton speakbutton;
         textToSpeech = new TextToSpeech(getApplicationContext(), this);
-        //ImageButton button_fragment = findViewById(R.id.image_button_check);
+        ImageButton button_fragment = findViewById(R.id.image_button_check);
         kLayout1 = (LinearLayout)findViewById(R.id.layout1);
         kLayout2 = (LinearLayout)findViewById(R.id.layout2);
         kLayout3 = (LinearLayout)findViewById(R.id.layout3);
@@ -153,27 +159,18 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
          */
 
-
-        /*
-        findViewById(R.id.redsh1).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                kLayout3.setVisibility(View.INVISIBLE);
+        findViewById(R.id.image_button_check).setOnTouchListener((v, event) -> {
+            switch (event.getAction()){
+                case MotionEvent.ACTION_DOWN:
+                    questionLabel.setText(rightAnswer);
+                    break;
+                case MotionEvent.ACTION_UP:
+                    questionLabel.setText(hintQuestioLavel);
+                    break;
             }
+            return false;
         });
 
-         */
-
-
-/*
-        findViewById(R.id.image_button_check).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                kLayout3.setVisibility(View.VISIBLE);
-            }
-        });
-
-         */
         findViewById(R.id.image_button_setting).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -262,6 +259,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         }
     }
 
+    //Only Init Must be needed
     public void onInit(int i) {
         if(i == textToSpeech.SUCCESS){
             //Toast.makeText(this,"Success",Toast.LENGTH_SHORT).show();
@@ -310,6 +308,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         ArrayList<String> question = questionArray1.get(randomNum);
         //Show the question
         questionLabel.setText(question.get(0));
+        hintQuestioLavel = questionLabel.getText().toString();
         //set the right answer
         rightAnswer = question.get(1);
         //Deleter pre-question
@@ -390,6 +389,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                 })
                 .show();
         dLog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.WHITE);
-        dLog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(R.color.alertBlue));
+        dLog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(R.color.alertB));
     }
 }
