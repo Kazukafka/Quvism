@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
     private TextView countLabel;
     private TextView questionLabel;
-    private String hintQuestioLavel;
+    private String hintQuestionLavel;
     private Button answerBtn1;
     private Button answerBtn2;
     private Button answerBtn3;
@@ -163,9 +163,11 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             switch (event.getAction()){
                 case MotionEvent.ACTION_DOWN:
                     questionLabel.setText(rightAnswer);
+                    questionLabel.setTextColor(Color.RED);
                     break;
                 case MotionEvent.ACTION_UP:
-                    questionLabel.setText(hintQuestioLavel);
+                    questionLabel.setText(hintQuestionLavel);
+                    questionLabel.setTextColor(Color.GRAY);
                     break;
             }
             return false;
@@ -308,7 +310,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         ArrayList<String> question = questionArray1.get(randomNum);
         //Show the question
         questionLabel.setText(question.get(0));
-        hintQuestioLavel = questionLabel.getText().toString();
+        hintQuestionLavel = questionLabel.getText().toString();
         //set the right answer
         rightAnswer = question.get(1);
         //Deleter pre-question

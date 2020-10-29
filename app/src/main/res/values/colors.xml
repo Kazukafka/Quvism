@@ -10,4 +10,6 @@
 
     <color name="royalBlue">#4169e1</color>
     <color name="resetBlue">#b0c4de</color>
+
+    <color name="mainBackGround">#f5f5dc</color>
 </resources>
