@@ -2,11 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/add_button"
-        android:icon="@drawable/icon3"
-        app:showAsAction="always"
-        android:title=""
-        >
+        android:id="@+id/action_add_contact"
+        android:icon="@android:drawable/ic_menu_help"
+        android:title="Add contact"
+        app:showAsAction="ifRoom" >
     </item>
+    <item
+        android:id="@+id/menu_item"
+        android:icon="@android:drawable/ic_menu_help"
+        android:title="Cut"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_item1"
 
+        android:title="Test"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_item2"
+
+        android:title="222"
+        app:showAsAction="ifRoom" />
 </menu>
