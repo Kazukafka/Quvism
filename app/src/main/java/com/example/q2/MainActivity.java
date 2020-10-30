@@ -39,18 +39,18 @@ import java.util.logging.Handler;
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener{
 
+    public String message;
+
     //SQLite Components
     private TestOpenHelper helper;
     private SQLiteDatabase db;
-
     private LinearLayout kLayout1;
     private LinearLayout kLayout2;
     private LinearLayout kLayout3;
-    //Switch switchSheet = (Switch) findViewById(R.id.switchSheet);
 
+    //Switch switchSheet = (Switch) findViewById(R.id.switchSheet);
     int MY_DATA_CHECK_CODE = 1000;
     TextToSpeech textToSpeech;
-
     private TextView countLabel;
     private TextView questionLabel;
     private String hintQuestionLavel;
@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     private Button answerBtn2;
     private Button answerBtn3;
     private Button answerBtn4;
-
     private String rightAnswer;
     private int rightAnswerCount = 0;
     private int qCount = 1;
@@ -95,6 +94,50 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             {"Homseni!2", "See you tomorrow", "ABC", "fine", "Soso"},
             {"Head ööd!2", "Good night", "No", "Yes", "PPAP"},
             {"Tere tulemast!2", "Welcome! (informal)", "Hell", "Yes", "It is easy"},
+    };
+
+    String[][] qDB2 = {
+            // {"Estonian", "RightAnswer", "Choice_1", "Choice _２", "Choice_３"}
+            {"Ter22e", "Hello", "Thanks", "Oh my god", "No"},
+            {"A22itah", "Thank you", "Yes", "Well Done", "Not really"},
+            {"Homik2st", "Morning","ABC", "Doremi", "Evening"},
+            {"Head ö2öd!", "Good Evening", "How are you?", "Fine", "Soso"},
+            {"Nägem22222ist!", "Bye!","See you", "Good", "Never"},
+            {"Maga häs2ti!", "Sleep well","Hey", "Never mind", "right"},
+            {"Homsen22i!", "See you tomorrow", "ABC", "fine", "Soso"},
+            {"Head ö22öd!", "Good night", "No", "Yes", "PPAP"},
+            {"Tere tul2emast!", "Welcome! (informal)", "Hell", "Yes", "It is easy"},
+            {"Ter22e2", "Hello", "Thanks", "Oh my god", "No"},
+            {"Aitah22", "Thank you", "Yes", "Well Done", "Not really"},
+            {"Homikst2", "Morning","ABC", "Doremi", "Evening"},
+            {"Head ööd!2", "Good Evening", "How are you?", "Fine", "Soso"},
+            {"Nägemis22t!2", "Bye!","See you", "Good", "Never"},
+            {"Maga hästi!2", "Sleep well","Hey", "Never mind", "right"},
+            {"Homsen2i!2", "See you tomorrow", "ABC", "fine", "Soso"},
+            {"Head ööd!2", "Good night", "No", "Yes", "PPAP"},
+            {"Tere tulemast!2", "Welcome! (informal)", "Hell", "Yes", "It is easy"},
+    };
+
+    String[][] qDB3 = {
+            // {"Estonian", "RightAnswer", "Choice_1", "Choice _２", "Choice_３"}
+            {"Tere333", "Hello", "Thanks", "Oh my god", "No"},
+            {"Aitah333", "Thank you", "Yes", "Well Done", "Not really"},
+            {"Homikst333", "Morning","ABC", "Doremi", "Evening"},
+            {"Head ööd!333", "Good Evening", "How are you?", "Fine", "Soso"},
+            {"Nägemi333st!333", "Bye!","See you", "Good", "Never"},
+            {"Maga hä333sti!", "Sleep well","Hey", "Never mind", "right"},
+            {"Homseni!", "See you tomorrow", "ABC", "fine", "Soso"},
+            {"Hea333d333 ööd!", "Good night", "No", "Yes", "PPAP"},
+            {"Tere tulemast!", "Welcome! (informal)", "Hell", "Yes", "It is easy"},
+            {"Tere2", "Hello", "Thanks", "Oh my god", "No"},
+            {"Aita3333333h2", "Thank you", "Yes", "Well Done", "Not really"},
+            {"Hom333ikst2", "Morning","ABC", "Doremi", "Evening"},
+            {"Head333 ööd!2", "Good Evening", "How are you?", "Fine", "Soso"},
+            {"Näg33emist!2", "Bye!","See you", "Good", "Never"},
+            {"Maga hästi!2", "Sleep well","Hey", "Never mind", "right"},
+            {"Hom33seni!2", "See you tomorrow", "ABC", "fine", "Soso"},
+            {"Head 333ööd!2", "Good night", "No", "Yes", "PPAP"},
+            {"Tere tule333mast!2", "Welcome! (informal)", "Hell", "Yes", "It is easy"},
     };
 
     @Override
@@ -232,6 +275,109 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         answerBtn4 = findViewById(R.id.answerBtn4);
 
         //Make questionArray from qDB
+
+        Intent intent1 = getIntent();
+        String Test2 = "Test";
+        message = intent1.getStringExtra(StartActivity.EXTRA_MESSAGE);
+        //↓が問題のコード
+        if (message == "Test"){
+            for (String[] quizDatum : qDB1) {
+                //Prepare the nw array
+                ArrayList<String> tmpArray = new ArrayList<>();
+                //Add QuestionData
+                tmpArray.add(quizDatum[0]);
+                tmpArray.add(quizDatum[1]);
+                tmpArray.add(quizDatum[2]);
+                tmpArray.add(quizDatum[3]);
+                tmpArray.add(quizDatum[4]);
+                //Add tmpArray to the questionArray
+                questionArray1.add(tmpArray);
+            }
+            showNextQuiz();
+        } else {
+            //↓Here works
+            for (String[] quizDatum : qDB2) {
+                //Prepare the nw array
+                ArrayList<String> tmpArray = new ArrayList<>();
+                //Add QuestionData
+                tmpArray.add(quizDatum[0]);
+                tmpArray.add(quizDatum[1]);
+                tmpArray.add(quizDatum[2]);
+                tmpArray.add(quizDatum[3]);
+                tmpArray.add(quizDatum[4]);
+                //Add tmpArray to the questionArray
+                questionArray1.add(tmpArray);
+            }
+            showNextQuiz();
+        }
+
+        /*
+        Intent intentTest = getIntent();
+        int data1 = intentTest.getIntExtra(StartActivity.EXTRA_DATA, 0);
+        if (data1 == 1) {
+            //Here DOES NOT WORK
+            for (String[] quizDatum : qDB1) {
+                //Prepare the nw array
+                ArrayList<String> tmpArray = new ArrayList<>();
+                //Add QuestionData
+                tmpArray.add(quizDatum[0]);
+                tmpArray.add(quizDatum[1]);
+                tmpArray.add(quizDatum[2]);
+                tmpArray.add(quizDatum[3]);
+                tmpArray.add(quizDatum[4]);
+                //Add tmpArray to the questionArray
+                questionArray1.add(tmpArray);
+            }
+            showNextQuiz();
+        } else {
+            //↓Here works
+            for (String[] quizDatum : qDB2) {
+                //Prepare the nw array
+                ArrayList<String> tmpArray = new ArrayList<>();
+                //Add QuestionData
+                tmpArray.add(quizDatum[0]);
+                tmpArray.add(quizDatum[1]);
+                tmpArray.add(quizDatum[2]);
+                tmpArray.add(quizDatum[3]);
+                tmpArray.add(quizDatum[4]);
+                //Add tmpArray to the questionArray
+                questionArray1.add(tmpArray);
+            }
+            showNextQuiz();
+        }
+
+         */
+            /*
+        } else if (message == "2") {
+            for (String[] quizDatum : qDB2) {
+                //Prepare the nw array
+                ArrayList<String> tmpArray = new ArrayList<>();
+                //Add QuestionData
+                tmpArray.add(quizDatum[0]);
+                tmpArray.add(quizDatum[1]);
+                tmpArray.add(quizDatum[2]);
+                tmpArray.add(quizDatum[3]);
+                tmpArray.add(quizDatum[4]);
+                //Add tmpArray to the questionArray
+                questionArray1.add(tmpArray);
+            }
+            showNextQuiz();
+        } else if (message == "3"){
+            for (String[] quizDatum : qDB3) {
+                //Prepare the nw array
+                ArrayList<String> tmpArray = new ArrayList<>();
+                //Add QuestionData
+                tmpArray.add(quizDatum[0]);
+                tmpArray.add(quizDatum[1]);
+                tmpArray.add(quizDatum[2]);
+                tmpArray.add(quizDatum[3]);
+                tmpArray.add(quizDatum[4]);
+                //Add tmpArray to the questionArray
+                questionArray1.add(tmpArray);
+            }
+            showNextQuiz();
+        }
+        /*
         for (String[] quizDatum : qDB1) {
             //Prepare the nw array
             ArrayList<String> tmpArray = new ArrayList<>();
@@ -245,6 +391,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             questionArray1.add(tmpArray);
         }
         showNextQuiz();
+
+         */
     }
 
     @Override

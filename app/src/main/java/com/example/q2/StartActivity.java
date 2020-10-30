@@ -18,8 +18,15 @@ import android.widget.LinearLayout;
 import com.google.android.material.snackbar.Snackbar;
 
 public class StartActivity extends AppCompatActivity {
-    private LinearLayout menuLayout;
-    private int dbNum = 1;
+    public static final String EXTRA_MESSAGE
+//            = "com.example.testactivitytrasdata.MESSAGE";
+            = "YourPackageName.MESSAGE";
+
+    /*
+    public static final String EXTRA_DATA
+            = "com.example.testactivitytrasdata.DATA";
+
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,31 +79,50 @@ public class StartActivity extends AppCompatActivity {
          */
 
         imageButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), MainActivity.class);
-                dbNum = 1;
+                String str = "Test";
+                intent.putExtra(EXTRA_MESSAGE, str);
                 startActivity(intent);
             }
         });
 
-        imageButton2.setOnClickListener(new View.OnClickListener() {
+        /*
+        imageButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), MainActivity.class);
-                dbNum = 2;
+                int data1 = 1;
+                intent.putExtra("EXTRA_DATA", data1);
                 startActivity(intent);
+            }
+        });
+
+         */
+
+
+        /*
+        imageButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplication(), MainActivity.class);
+                String dbNum = "2";
+                intent1.putExtra(EXTRA_MESSAGE, dbNum);
+                startActivityForResult( intent1, RESULT_SUBACTIVITY );
             }
         });
 
         imageButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), MainActivity.class);
-                dbNum = 3;
-                startActivity(intent);
+                Intent intent1 = new Intent(getApplication(), MainActivity.class);
+                String dbNum = "3";
+                intent1.putExtra(EXTRA_MESSAGE, dbNum);
+                startActivityForResult( intent1, RESULT_SUBACTIVITY );
             }
         });
+
+         */
     }
 
 
