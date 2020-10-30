@@ -280,8 +280,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         String Test2 = "Test";
         message = intent1.getStringExtra(StartActivity.EXTRA_MESSAGE);
         //↓が問題のコード
-        if (message == "Test"){
-            for (String[] quizDatum : qDB1) {
+        if (message.equals("Test")){
+            for (String[] quizDatum : qDB3) {
                 //Prepare the nw array
                 ArrayList<String> tmpArray = new ArrayList<>();
                 //Add QuestionData
