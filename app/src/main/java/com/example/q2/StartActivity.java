@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -133,13 +134,34 @@ public class StartActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
 
         switch(item.getItemId()){
+            case R.id.info_menu:
+                String url_info = "https://www.amazon.co.jp/";
+                Intent info_link = new Intent(Intent.ACTION_VIEW);
+                info_link.setData(Uri.parse(url_info));
+                startActivity(info_link);
+                return true;
+            case R.id.ask_menu:
+                String url_ask = "https://www.amazon.co.uk/";
+                Intent ask_link = new Intent(Intent.ACTION_VIEW);
+                ask_link.setData(Uri.parse(url_ask));
+                startActivity(ask_link);
+                return true;
             case R.id.menu_item1:
+                String url1 = "https://hatenacorp.jp/";
+                Intent i1 = new Intent(Intent.ACTION_VIEW);
+                i1.setData(Uri.parse(url1));
+                startActivity(i1);
+                return true;
+                /*
                 Intent i = new Intent(StartActivity.this,MainActivity.class);
                 startActivity(i);
                 return true;//this item has your app icon
+                 */
             case R.id.menu_item2:
-                //↓This Line is not wroking
-                menuLayout.setVisibility(View.VISIBLE);
+                String url2 = "https://techblog.yahoo.co.jp/android/androidcoordinatorlayout/";
+                Intent i2 = new Intent(Intent.ACTION_VIEW);
+                i2.setData(Uri.parse(url2));
+                startActivity(i2);
                 return true;
             default: return super.onOptionsItemSelected(item);
         }
@@ -147,7 +169,7 @@ public class StartActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu){
-        menu.findItem(R.id.menu_item).setEnabled(false);
+        //menu.findItem(R.id.menu_item).setEnabled(false);
         return super.onPrepareOptionsMenu(menu);
     }
 }

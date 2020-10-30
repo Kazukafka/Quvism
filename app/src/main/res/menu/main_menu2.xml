@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/info_menu"
+        android:id="@+id/action_add_contact"
         android:icon="@android:drawable/ic_dialog_info"
-        android:title="information"
+        android:title="Add contact"
         app:showAsAction="ifRoom" >
     </item>
     <item
-        android:id="@+id/ask_menu"
+        android:id="@+id/menu_item"
         android:icon="@android:drawable/ic_menu_help"
-        android:title="Ask Question"
+        android:title="Cut"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_item1"
