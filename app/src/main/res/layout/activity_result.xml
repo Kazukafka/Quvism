@@ -53,6 +53,7 @@
         android:paddingBottom="1dp">
 
         <Button
+            android:background="@drawable/btn1"
             android:layout_width="140dp"
             android:layout_height="60dp"
             android:layout_marginTop="80dp"
@@ -61,6 +62,16 @@
             android:textSize="18sp" />
 
         <Button
+            android:background="@drawable/btn2"
+            android:id="@+id/buttonRstart"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="80dp"
+            android:text="Menu"
+            android:textSize="18sp" />
+
+        <Button
+            android:background="@drawable/btn3"
             android:id="@+id/buttonTest"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -68,13 +79,6 @@
             android:text="Mistakes"
             android:textSize="18sp" />
 
-        <Button
-            android:id="@+id/buttonRstart"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="80dp"
-            android:text="Bact to Start"
-            android:textSize="18sp" />
 
     </LinearLayout>
 

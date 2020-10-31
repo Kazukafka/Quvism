@@ -17,6 +17,12 @@
         tools:layout_editor_absoluteX="39dp"
         tools:layout_editor_absoluteY="-62dp">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="1dp">
+
         <Button
             android:id="@+id/button_read333"
             android:layout_width="wrap_content"
@@ -32,6 +38,7 @@
             android:text="Delete"
             tools:layout_editor_absoluteX="33dp"
             tools:layout_editor_absoluteY="667dp" />
+    </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
