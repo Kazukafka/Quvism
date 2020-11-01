@@ -31,14 +31,5 @@ public class MistakesActivity extends AppCompatActivity {
         list.setAdapter(mAdapter);
         list.setDivider(null);
 
-        Button btn = findViewById(R.id.button_to_flip);
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), FlipActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }
