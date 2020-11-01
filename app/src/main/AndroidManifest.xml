@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FlipActivity"></activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,8 +20,7 @@
         <activity android:name=".TestdbActivity" />
         <activity android:name=".ShowActivity" />
         <activity android:name=".MistakesActivity" />
-        <activity android:name=".StartActivity">
-        </activity>
+        <activity android:name=".StartActivity"></activity>
         <activity android:name=".ResultActivity" />
         <activity android:name=".MainActivity" /> <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data

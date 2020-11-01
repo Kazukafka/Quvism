@@ -60,6 +60,15 @@
             tools:layout_editor_absoluteY="667dp" />
 
         <Button
+            android:background="@drawable/btn3"
+            android:id="@+id/button_to_flip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flip Check"
+            tools:layout_editor_absoluteX="33dp"
+            tools:layout_editor_absoluteY="667dp" />
+
+        <Button
             android:background="@drawable/btn1"
             android:id="@+id/button_delete"
             android:layout_width="wrap_content"
@@ -67,6 +76,7 @@
             android:text="Reset All"
             tools:layout_editor_absoluteX="33dp"
             tools:layout_editor_absoluteY="667dp" />
+
     </LinearLayout>
 
         <ListView xmlns:android="http://schemas.android.com/apk/res/android"

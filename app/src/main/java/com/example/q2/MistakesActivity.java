@@ -1,9 +1,12 @@
 package com.example.q2;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,5 +30,15 @@ public class MistakesActivity extends AppCompatActivity {
         CustomAdapter mAdapter = new CustomAdapter(this, 0, labelList);
         list.setAdapter(mAdapter);
         list.setDivider(null);
+
+        Button btn = findViewById(R.id.button_to_flip);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), FlipActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

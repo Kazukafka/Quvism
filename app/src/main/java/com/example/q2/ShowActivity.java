@@ -1,6 +1,8 @@
 package com.example.q2;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
@@ -52,6 +54,15 @@ public class ShowActivity extends AppCompatActivity {
             public void onClick(View view) {
                 clearDatabase("pokemonDB");
                 moveLayout();
+            }
+        });
+
+        Button btn_to_flip = findViewById(R.id.button_to_flip);
+        btn_to_flip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), FlipActivity.class);
+                startActivity(intent);
             }
         });
     }
