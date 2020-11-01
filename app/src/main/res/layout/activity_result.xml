@@ -54,7 +54,7 @@
 
         <Button
             android:background="@drawable/btn1"
-            android:layout_width="140dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="80dp"
             android:onClick="returnTop"
@@ -62,16 +62,16 @@
             android:textSize="18sp" />
 
         <Button
-            android:background="@drawable/btn2"
+            android:background="@drawable/resultbtn2nd2"
             android:id="@+id/buttonRstart"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="80dp"
-            android:text="Menu"
+            android:text="Back to Menu"
             android:textSize="18sp" />
 
         <Button
-            android:background="@drawable/btn3"
+            android:background="@drawable/resultbtn2nd1"
             android:id="@+id/buttonTest"
             android:layout_width="match_parent"
             android:layout_height="60dp"
