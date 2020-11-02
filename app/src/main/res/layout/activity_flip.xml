@@ -4,43 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FlipActivity"
-    android:background="#f5f5dc">
+    tools:context=".SlipActivity">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    <com.wajahatkarim3.easyflipview.EasyFlipView
+        android:id="@+id/easyFlipView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:flipOnTouch="true"
+        app:flipDuration="500"
+        app:flipEnabled="true" >
 
         <ImageView
-            android:id="@+id/flip2"
+            android:src="@drawable/test_a_image"
+            android:foregroundGravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            app:srcCompat="@drawable/test_c_image" />
+            android:layout_height="200dp" />
 
-        <TextView
-            android:id="@+id/flipTest"
+        <ImageView
+            android:src="@drawable/test_c_image"
+            android:foregroundGravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:text="MisakaMikoto"
-            android:textAlignment="center"
-            android:textSize="36sp" />
+            android:layout_height="200dp" />
 
-    </RelativeLayout>
-
-    <Button
-        android:background="@drawable/frame_redsheet"
-        android:id="@+id/bbb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Read"
-        tools:layout_editor_absoluteX="260dp"
-        tools:layout_editor_absoluteY="667dp" />
+    </com.wajahatkarim3.easyflipview.EasyFlipView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

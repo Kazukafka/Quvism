@@ -49,5 +49,6 @@ dependencies {
             {
                 transitive = true
             }
+    //↓use the library of flip animation
     implementation 'com.wajahatkarim3.EasyFlipView:EasyFlipView:3.0.0'
 }
