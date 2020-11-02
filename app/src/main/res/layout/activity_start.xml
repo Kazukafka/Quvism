@@ -59,9 +59,10 @@
 
             <TextView
                 android:id="@+id/textView"
+                android:textSize="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Daily Communication"
+                android:text="Daily Communication\nHere is 50 words\nGreeting, Simple Words etc"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.803"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -97,10 +98,11 @@
             tools:context=".MainActivity">
 
             <TextView
+                android:textSize="15dp"
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Business Communication"
+                android:text="Business Communication\nHere is 50 words\nGreeting, Simple Words etc"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.808"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -136,9 +138,10 @@
             tools:context=".MainActivity">
 
             <TextView
+                android:textSize="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Academic Communication"
+                android:text="Academic Communication\nHere is 50 words\nGreeting, Simple Words etc"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.808"
                 app:layout_constraintLeft_toLeftOf="parent"
