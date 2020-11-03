@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SlipActivity">
+    tools:context=".FlipActivity">
 
     <com.wajahatkarim3.easyflipview.EasyFlipView
         android:id="@+id/easyFlipView"
@@ -12,20 +12,36 @@
         android:layout_height="wrap_content"
         app:flipOnTouch="true"
         app:flipDuration="500"
-        app:flipEnabled="true" >
+        app:flipEnabled="true"
+        >
 
         <ImageView
             android:src="@drawable/test_a_image"
             android:foregroundGravity="center"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="334dp"
+            android:text="MisakaMikoto"/>
 
         <ImageView
-            android:src="@drawable/test_c_image"
-            android:foregroundGravity="center"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="334dp"
+            android:foregroundGravity="center"
+            android:src="@drawable/test_c_image"
+            android:text="Hello World!" />
+
 
     </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+    <TextView
+        android:id="@+id/txtFlip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
