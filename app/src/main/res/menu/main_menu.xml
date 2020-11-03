@@ -13,11 +13,11 @@
         android:title="Ask Question"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/menu_item1"
+        android:id="@+id/menu_howtouse"
         android:title="How To Use"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/menu_item2"
+        android:id="@+id/menu_askq"
         android:title="Ask Question"
         app:showAsAction="ifRoom" />
 </menu>

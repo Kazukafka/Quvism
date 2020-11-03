@@ -172,7 +172,7 @@ public class StartActivity extends AppCompatActivity {
                 ask_link.setData(Uri.parse(url_ask));
                 startActivity(ask_link);
                 return true;
-            case R.id.menu_item1:
+            case R.id.menu_howtouse:
                 String url1 = "https://hatenacorp.jp/";
                 Intent i1 = new Intent(Intent.ACTION_VIEW);
                 i1.setData(Uri.parse(url1));
@@ -183,8 +183,8 @@ public class StartActivity extends AppCompatActivity {
                 startActivity(i);
                 return true;//this item has your app icon
                  */
-            case R.id.menu_item2:
-                String url2 = "https://techblog.yahoo.co.jp/android/androidcoordinatorlayout/";
+            case R.id.menu_askq:
+                String url2 = "https://forms.gle/d2YA2s8cVNGhh3vt6";
                 Intent i2 = new Intent(Intent.ACTION_VIEW);
                 i2.setData(Uri.parse(url2));
                 startActivity(i2);
