@@ -9,8 +9,8 @@
     </item>
     <item
         android:id="@+id/ask_menu"
-        android:icon="@android:drawable/ic_menu_help"
-        android:title="Ask Question"
+        android:icon="@android:drawable/ic_menu_share"
+        android:title="Share"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_howtouse"

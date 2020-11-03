@@ -3,6 +3,7 @@ package com.example.q2;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ShareCompat;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -102,10 +103,23 @@ public class StartActivity extends AppCompatActivity {
                 dLog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(R.color.alertB));
                 return true;
             case R.id.ask_menu:
+                /*
                 String url_ask = "https://www.amazon.co.uk/";
                 Intent ask_link = new Intent(Intent.ACTION_VIEW);
                 ask_link.setData(Uri.parse(url_ask));
                 startActivity(ask_link);
+
+                 */
+
+                String articleURL = "";
+                String articleTitle = "";
+                String sharedText = articleTitle + " " + articleURL;
+                ShareCompat.IntentBuilder builder = ShareCompat.IntentBuilder.from(this);
+                builder.setChooserTitle("Test");
+                builder.setSubject(articleTitle);
+                builder.setText(sharedText);
+                builder.setType("text/plain");
+                builder.startChooser();
                 return true;
             case R.id.menu_howtouse:
                 String url1 = "https://hatenacorp.jp/";
