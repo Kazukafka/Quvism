@@ -5,7 +5,7 @@
         android:id="@+id/info_menu"
         android:icon="@android:drawable/ic_dialog_info"
         android:title="information"
-        app:showAsAction="ifRoom" >
+        app:showAsAction="ifRoom">
     </item>
     <item
         android:id="@+id/ask_menu"

@@ -183,25 +183,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         kLayout2 = (LinearLayout)findViewById(R.id.layout2);
         kLayout3 = (LinearLayout)findViewById(R.id.layout3);
 
-        /*
-        if(savedInstanceState == null){
-            button_fragment.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View view){
-                    FragmentManager fragmentManager1 = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager1.beginTransaction();
-                    //Set BackStack
-                    fragmentTransaction.addToBackStack(null);
-                    //Set the Parameter
-                    fragmentTransaction.replace(R.id.container,
-                            TestFragment.newInstance("Fragment"));
-                    fragmentTransaction.commit();
-                }
-            });
-        }
-
-         */
-
         findViewById(R.id.image_button_check).setOnTouchListener((v, event) -> {
             switch (event.getAction()){
                 case MotionEvent.ACTION_DOWN:
@@ -311,88 +292,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             showNextQuiz();
         }
 
-        /*
-        Intent intentTest = getIntent();
-        int data1 = intentTest.getIntExtra(StartActivity.EXTRA_DATA, 0);
-        if (data1 == 1) {
-            //Here DOES NOT WORK
-            for (String[] quizDatum : qDB1) {
-                //Prepare the nw array
-                ArrayList<String> tmpArray = new ArrayList<>();
-                //Add QuestionData
-                tmpArray.add(quizDatum[0]);
-                tmpArray.add(quizDatum[1]);
-                tmpArray.add(quizDatum[2]);
-                tmpArray.add(quizDatum[3]);
-                tmpArray.add(quizDatum[4]);
-                //Add tmpArray to the questionArray
-                questionArray1.add(tmpArray);
-            }
-            showNextQuiz();
-        } else {
-            //↓Here works
-            for (String[] quizDatum : qDB2) {
-                //Prepare the nw array
-                ArrayList<String> tmpArray = new ArrayList<>();
-                //Add QuestionData
-                tmpArray.add(quizDatum[0]);
-                tmpArray.add(quizDatum[1]);
-                tmpArray.add(quizDatum[2]);
-                tmpArray.add(quizDatum[3]);
-                tmpArray.add(quizDatum[4]);
-                //Add tmpArray to the questionArray
-                questionArray1.add(tmpArray);
-            }
-            showNextQuiz();
-        }
-
-         */
-            /*
-        } else if (message == "2") {
-            for (String[] quizDatum : qDB2) {
-                //Prepare the nw array
-                ArrayList<String> tmpArray = new ArrayList<>();
-                //Add QuestionData
-                tmpArray.add(quizDatum[0]);
-                tmpArray.add(quizDatum[1]);
-                tmpArray.add(quizDatum[2]);
-                tmpArray.add(quizDatum[3]);
-                tmpArray.add(quizDatum[4]);
-                //Add tmpArray to the questionArray
-                questionArray1.add(tmpArray);
-            }
-            showNextQuiz();
-        } else if (message == "3"){
-            for (String[] quizDatum : qDB3) {
-                //Prepare the nw array
-                ArrayList<String> tmpArray = new ArrayList<>();
-                //Add QuestionData
-                tmpArray.add(quizDatum[0]);
-                tmpArray.add(quizDatum[1]);
-                tmpArray.add(quizDatum[2]);
-                tmpArray.add(quizDatum[3]);
-                tmpArray.add(quizDatum[4]);
-                //Add tmpArray to the questionArray
-                questionArray1.add(tmpArray);
-            }
-            showNextQuiz();
-        }
-        /*
-        for (String[] quizDatum : qDB1) {
-            //Prepare the nw array
-            ArrayList<String> tmpArray = new ArrayList<>();
-            //Add QuestionData
-            tmpArray.add(quizDatum[0]);
-            tmpArray.add(quizDatum[1]);
-            tmpArray.add(quizDatum[2]);
-            tmpArray.add(quizDatum[3]);
-            tmpArray.add(quizDatum[4]);
-            //Add tmpArray to the questionArray
-            questionArray1.add(tmpArray);
-        }
-        showNextQuiz();
-
-         */
     }
 
     @Override
