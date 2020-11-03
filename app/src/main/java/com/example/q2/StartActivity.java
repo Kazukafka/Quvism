@@ -103,20 +103,8 @@ public class StartActivity extends AppCompatActivity {
                 dLog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(R.color.alertB));
                 return true;
             case R.id.ask_menu:
-                /*
-                String url_ask = "https://www.amazon.co.uk/";
-                Intent ask_link = new Intent(Intent.ACTION_VIEW);
-                ask_link.setData(Uri.parse(url_ask));
-                startActivity(ask_link);
-
-                 */
-
-                String articleURL = "";
-                String articleTitle = "";
-                String sharedText = articleTitle + " " + articleURL;
+                String sharedText = "Hello, I am studying Estonian Language";
                 ShareCompat.IntentBuilder builder = ShareCompat.IntentBuilder.from(this);
-                builder.setChooserTitle("Test");
-                builder.setSubject(articleTitle);
                 builder.setText(sharedText);
                 builder.setType("text/plain");
                 builder.startChooser();
