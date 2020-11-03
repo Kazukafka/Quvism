@@ -31,6 +31,7 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+        setTitle("Menu of Quvism");
 
         ImageButton imageButton1 = findViewById(R.id.image_button1);
         ImageButton imageButton2 = findViewById(R.id.image_button2);
@@ -56,27 +57,6 @@ public class StartActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
 
         switch(item.getItemId()){
-            /*
-            case R.id.info_menu:
-                String url_info = "https://github.com/Kazukafka/Quvism";
-                Intent info_link = new Intent(Intent.ACTION_VIEW);
-                info_link.setData(Uri.parse(url_info));
-                startActivity(info_link);
-                return true;
-
-             */
-            /*
-            case R.id.info_menu:
-                Toast myToast = Toast.makeText(
-                        getApplicationContext(),
-                        "ポップアップ！！",
-                        Toast.LENGTH_SHORT
-                );
-                myToast.show();
-                return true;
-
-             */
-
             case R.id.info_menu:
                 //↓These Lines must be under If Statement
                 TextView titleView = new TextView(this);

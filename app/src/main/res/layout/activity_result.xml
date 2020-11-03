@@ -63,7 +63,7 @@
 
         <Button
             android:background="@drawable/resultbtn2nd2"
-            android:id="@+id/buttonRstart"
+            android:id="@+id/btnBackToMenu"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="80dp"
@@ -72,7 +72,7 @@
 
         <Button
             android:background="@drawable/resultbtn2nd1"
-            android:id="@+id/buttonTest"
+            android:id="@+id/btnToMistakes"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="80dp"

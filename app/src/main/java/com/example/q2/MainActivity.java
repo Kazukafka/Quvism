@@ -3,8 +3,6 @@ package com.example.q2;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
@@ -25,7 +23,6 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.MobileAds;
@@ -34,8 +31,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
 import java.util.Random;
-import java.util.Timer;
-import java.util.logging.Handler;
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener{
 
@@ -144,6 +139,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Quiz");
         //Ad Place
         // Test App ID
         MobileAds.initialize(this,
@@ -378,7 +374,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         ContentValues values = new ContentValues();
         values.put("estonian", com);
         values.put("english", price);
-        db.insert("pokemonDB", null, values);
+        db.insert("mistakesDB", null, values);
     }
 
     public void checkAnswer(View view) {

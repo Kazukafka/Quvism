@@ -15,6 +15,7 @@ public class ResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+        setTitle("Your Result");
 
         TextView resultLabel = findViewById(R.id.resultLabel);
         TextView totalScoreLabel = findViewById(R.id.totalScoreLabel);
@@ -38,17 +39,17 @@ public class ResultActivity extends AppCompatActivity {
         editor.putInt("tScore", totalSco);
         editor.apply();
 
-        Button btn = findViewById(R.id.buttonTest);
-        Button btn2 = findViewById(R.id.buttonRstart);
+        Button btnTOMIS = findViewById(R.id.btnToMistakes);
+        Button btnBTM = findViewById(R.id.btnBackToMenu);
 
-        btn.setOnClickListener(new View.OnClickListener() {
+        btnTOMIS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), MistakeActivity.class);
                 startActivity(intent);
             }
         });
-        btn2.setOnClickListener(new View.OnClickListener() {
+        btnBTM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), StartActivity.class);

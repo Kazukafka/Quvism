@@ -10,12 +10,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -27,32 +24,22 @@ public class MistakeActivity extends AppCompatActivity {
     private LinearLayout showLayout2;
     private LinearLayout showLayout1;
 
+    private TextView nodatatxt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mistakes);
+        setContentView(R.layout.activity_mistake);
+        setTitle("Mistakes");
+        readData();
 
-        final Button readButton = findViewById(R.id.button_read);
-        readButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                readData();
-                /*
-                if(db == null){
-                    moveLayout();
-                } else {
-                    readData();
-                }
-
-                 */
-            }
-        });
+        Button btnBTM = findViewById(R.id.btnBackToMenu);
 
         Button deleteButton = findViewById(R.id.button_delete);
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clearDatabase("pokemonDB");
+                clearDatabase("mistakesDB");
                 moveLayout();
             }
         });
@@ -65,22 +52,29 @@ public class MistakeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnBTM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), StartActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void readData(){
-
         ListView list = findViewById(R.id.listView);
         ArrayList labelList = new ArrayList();
-
         if(helper == null){
             helper = new TestOpenHelper(getApplicationContext());
         }
         if(db == null){
             db = helper.getReadableDatabase();
+        } else {
         }
         Log.d("debug","**********Cursor");
         Cursor cur = db.query(
-                "pokemonDB",
+                "mistakesDB",
                 new String[] { "estonian", "english" },
                 null,
                 null,
@@ -90,7 +84,7 @@ public class MistakeActivity extends AppCompatActivity {
         );
 
         //How many raw lines in the database?
-        int rawCount = (int) DatabaseUtils.queryNumEntries(db, "pokemonDB");
+        int rawCount = (int) DatabaseUtils.queryNumEntries(db, "mistakesDB");
         cur.moveToFirst();
 
         for(int i=1; i<=rawCount; i++){
@@ -108,7 +102,7 @@ public class MistakeActivity extends AppCompatActivity {
     }
 
     public void clearDatabase(String TABLE_NAME) {
-        String clearDBQuery = "DELETE FROM "+ "pokemonDB";
+        String clearDBQuery = "DELETE FROM "+ "mistakesDB";
         db.execSQL(clearDBQuery);
     }
 
