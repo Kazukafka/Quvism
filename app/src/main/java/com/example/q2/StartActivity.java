@@ -4,9 +4,13 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -59,6 +64,7 @@ public class StartActivity extends AppCompatActivity {
                 return true;
 
              */
+            /*
             case R.id.info_menu:
                 Toast myToast = Toast.makeText(
                         getApplicationContext(),
@@ -66,6 +72,34 @@ public class StartActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT
                 );
                 myToast.show();
+                return true;
+
+             */
+
+            case R.id.info_menu:
+                //↓These Lines must be under If Statement
+                TextView titleView = new TextView(this);
+                String alertTitle="";
+                titleView.setTextSize(24);
+                titleView.setTextColor(Color.WHITE);
+                titleView.setPadding(20, 20, 20, 20);
+                titleView.setGravity(Gravity.CENTER);
+                TextView msgView = new TextView(this);
+                msgView.setText("Developer Info : \nKazuhisa Noguchi\n2020/21 PR-519 Software development project");
+                msgView.setTextSize(24);
+                msgView.setTextColor(Color.BLACK);
+                msgView.setPadding(20, 20, 40, 20);
+                AlertDialog dLog = new AlertDialog.Builder(this)
+                        .setView(msgView)
+                        .setPositiveButton("CLOSE", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        })
+                        .show();
+                dLog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.WHITE);
+                dLog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(R.color.alertB));
                 return true;
             case R.id.ask_menu:
                 String url_ask = "https://www.amazon.co.uk/";
