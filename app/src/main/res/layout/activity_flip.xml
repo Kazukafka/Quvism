@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="#f5f5dc"
     tools:context=".FlipActivity">
 
@@ -14,21 +15,26 @@
         app:flipOnTouch="true"
         app:flipDuration="500"
         app:flipEnabled="true"
+        android:layout_gravity="center"
         >
 
         <ImageView
             android:src="@drawable/test_a_image"
             android:foregroundGravity="center"
             android:layout_width="match_parent"
-            android:layout_height="334dp"
-            android:text="MisakaMikoto"/>
+            android:layout_height="wrap_content"
+            android:text="MisakaMikoto"
+            android:layout_gravity="center"
+            />
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="334dp"
+            android:layout_height="wrap_content"
             android:foregroundGravity="center"
             android:src="@drawable/test_c_image"
-            android:text="Hello World!" />
+            android:text="Hello World!"
+            android:layout_gravity="center"
+            />
 
 
     </com.wajahatkarim3.easyflipview.EasyFlipView>
@@ -40,6 +46,7 @@
         android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         />
 
 

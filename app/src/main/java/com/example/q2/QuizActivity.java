@@ -32,9 +32,12 @@ import java.util.Collections;
 import java.util.Locale;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener{
+public class QuizActivity extends AppCompatActivity implements TextToSpeech.OnInitListener{
+    public static final String EXTRA_MESSAGE2 = "testPackage2.MESSAGE";
 
     public String message;
+
+    private int num_outcome_define = 0;
 
     //SQLite Components
     private TestOpenHelper helper;
@@ -138,8 +141,9 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setTitle("Quiz");
+        setContentView(R.layout.activity_quiz);
+
+        //setTitle("Quiz");
         //Ad Place
         // Test App ID
         MobileAds.initialize(this,
@@ -252,27 +256,9 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         answerBtn4 = findViewById(R.id.answerBtn4);
 
         //Make questionArray from qDB
-
         Intent intent1 = getIntent();
-        String Test2 = "Test";
-        message = intent1.getStringExtra(StartActivity.EXTRA_MESSAGE);
-        //↓が問題のコード
-        if (message.equals("Test")){
-            for (String[] quizDatum : qDB3) {
-                //Prepare the nw array
-                ArrayList<String> tmpArray = new ArrayList<>();
-                //Add QuestionData
-                tmpArray.add(quizDatum[0]);
-                tmpArray.add(quizDatum[1]);
-                tmpArray.add(quizDatum[2]);
-                tmpArray.add(quizDatum[3]);
-                tmpArray.add(quizDatum[4]);
-                //Add tmpArray to the questionArray
-                questionArray1.add(tmpArray);
-            }
-            showNextQuiz();
-        } else {
-            //↓Here works
+        message = intent1.getStringExtra(BeginActivity.EXTRA_MESSAGE);
+        if (message.equals("Academic")){
             for (String[] quizDatum : qDB2) {
                 //Prepare the nw array
                 ArrayList<String> tmpArray = new ArrayList<>();
@@ -284,6 +270,39 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                 tmpArray.add(quizDatum[4]);
                 //Add tmpArray to the questionArray
                 questionArray1.add(tmpArray);
+                num_outcome_define=0;
+            }
+            showNextQuiz();
+        } else if (message.equals("Business")){
+            //↓Here works
+            for (String[] quizDatum : qDB3) {
+                //Prepare the nw array
+                ArrayList<String> tmpArray = new ArrayList<>();
+                //Add QuestionData
+                tmpArray.add(quizDatum[0]);
+                tmpArray.add(quizDatum[1]);
+                tmpArray.add(quizDatum[2]);
+                tmpArray.add(quizDatum[3]);
+                tmpArray.add(quizDatum[4]);
+                //Add tmpArray to the questionArray
+                questionArray1.add(tmpArray);
+                num_outcome_define=1;
+            }
+            showNextQuiz();
+        } else {
+            //↓Here works
+            for (String[] quizDatum : qDB1) {
+                //Prepare the nw array
+                ArrayList<String> tmpArray = new ArrayList<>();
+                //Add QuestionData
+                tmpArray.add(quizDatum[0]);
+                tmpArray.add(quizDatum[1]);
+                tmpArray.add(quizDatum[2]);
+                tmpArray.add(quizDatum[3]);
+                tmpArray.add(quizDatum[4]);
+                //Add tmpArray to the questionArray
+                questionArray1.add(tmpArray);
+                num_outcome_define=2;
             }
             showNextQuiz();
         }
@@ -423,9 +442,11 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                     public void onClick(DialogInterface dialog, int which) {
                         if (qCount == QUIZ_COUNT) {
                             //Move to the resultActivity
-                            Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), OutcomeActivity.class);
                             intent.putExtra("Count_right_ans", rightAnswerCount);
+                            intent.putExtra("againQuiz", num_outcome_define);
                             startActivity(intent);
+
                         } else {
                             qCount++;
                             showNextQuiz();

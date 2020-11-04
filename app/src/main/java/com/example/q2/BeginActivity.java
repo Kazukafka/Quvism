@@ -1,8 +1,6 @@
 package com.example.q2;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ShareCompat;
 
 import android.app.AlertDialog;
@@ -12,35 +10,45 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
-
-public class StartActivity extends AppCompatActivity {
+public class BeginActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "testPackage.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_begin);
         setTitle("Menu of Quvism");
 
-        ImageButton imageButton1 = findViewById(R.id.image_button1);
-        ImageButton imageButton2 = findViewById(R.id.image_button2);
-        ImageButton imageButton3 = findViewById(R.id.image_button3);
+        ImageButton imageButtonDaily = findViewById(R.id.image_button1);
+        ImageButton imageButtonAcademic = findViewById(R.id.image_button2);
+        ImageButton imageButtonBusiness = findViewById(R.id.image_button3);
 
-        imageButton1.setOnClickListener(new View.OnClickListener() {
+        imageButtonDaily.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), MainActivity.class);
-                String str = "Test";
+                Intent intent = new Intent(getApplication(), QuizActivity.class);
+                String str = "Daily";
+                intent.putExtra(EXTRA_MESSAGE, str);
+                startActivity(intent);
+            }
+        });
+        imageButtonAcademic.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), QuizActivity.class);
+                String str = "Academic";
+                intent.putExtra(EXTRA_MESSAGE, str);
+                startActivity(intent);
+            }
+        });
+        imageButtonBusiness.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), QuizActivity.class);
+                String str = "Business";
                 intent.putExtra(EXTRA_MESSAGE, str);
                 startActivity(intent);
             }

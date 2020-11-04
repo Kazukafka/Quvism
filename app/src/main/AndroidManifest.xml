@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RecheckActivity"></activity>
+        <activity android:name=".ReviewActivity"></activity>
         <activity android:name=".FlipActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
@@ -19,10 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".TestdbActivity" />
-        <activity android:name=".MistakeActivity" />
-        <activity android:name=".StartActivity" />
-        <activity android:name=".ResultActivity" />
-        <activity android:name=".MainActivity" /> <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+        <activity android:name=".WrongActivity" />
+        <activity android:name=".BeginActivity" />
+        <activity android:name=".OutcomeActivity" />
+        <activity android:name=".QuizActivity" /> <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3940256099942544~3347511713" />

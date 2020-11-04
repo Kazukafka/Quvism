@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MistakeActivity extends AppCompatActivity {
+public class WrongActivity extends AppCompatActivity {
 
     public TestOpenHelper helper;
     public SQLiteDatabase db;
@@ -29,12 +29,12 @@ public class MistakeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mistake);
+        setContentView(R.layout.activity_wrong);
         setTitle("Mistakes");
+
         readData();
 
         Button btnBTM = findViewById(R.id.btnBackToMenu);
-
         Button deleteButton = findViewById(R.id.button_delete);
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +48,7 @@ public class MistakeActivity extends AppCompatActivity {
         btn_to_flip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), FlipActivity.class);
+                Intent intent = new Intent(getApplication(), ReviewActivity.class);
                 startActivity(intent);
             }
         });
@@ -56,7 +56,7 @@ public class MistakeActivity extends AppCompatActivity {
         btnBTM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), StartActivity.class);
+                Intent intent = new Intent(getApplication(), BeginActivity.class);
                 startActivity(intent);
             }
         });

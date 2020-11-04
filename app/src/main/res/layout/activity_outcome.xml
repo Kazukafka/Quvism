@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResultActivity"
+    tools:context=".OutcomeActivity"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:background="#f5deb3" >
@@ -44,8 +44,6 @@
         android:textSize="20sp"
         android:layout_marginTop="60dp"/>
 
-
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,11 +51,11 @@
         android:paddingBottom="1dp">
 
         <Button
+            android:id="@+id/btnQuizAgain"
             android:background="@drawable/btn1"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="80dp"
-            android:onClick="returnTop"
             android:text="Quiz Again"
             android:textSize="18sp" />
 

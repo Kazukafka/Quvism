@@ -37,8 +37,8 @@
                 android:id="@+id/welcometxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Welcome"
-                android:textSize="50dp"
+                android:text="Welcome To Quvism!"
+                android:textSize="30dp"
                 android:textAlignment="center"/>
 
 
@@ -55,7 +55,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".MainActivity">
+            tools:context=".QuizActivity">
 
             <TextView
                 android:id="@+id/textView"
@@ -95,7 +95,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".MainActivity">
+            tools:context=".QuizActivity">
 
             <TextView
                 android:textSize="15dp"
@@ -135,7 +135,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".MainActivity">
+            tools:context=".QuizActivity">
 
             <TextView
                 android:textSize="15dp"
@@ -170,6 +170,6 @@
         android:layout_height="350dp"
         android:layout_gravity="center"
         android:orientation="vertical"
-        tools:context=".MainActivity">
+        tools:context=".QuizActivity">
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
