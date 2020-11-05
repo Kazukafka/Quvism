@@ -82,39 +82,6 @@ public class OutcomeActivity extends AppCompatActivity {
                 }
                 intent2.putExtra(EXTRA_MESSAGE, str);
                 startActivity(intent2);
-
-
-                /*
-
-                //Intent intent = new Intent(getApplication(), QuizActivity.class);
-                //String str = message2;
-                String str ="Business";
-                intent2.putExtra(EXTRA_MESSAGE, str);
-                startActivity(intent2);
-                /*
-
-                Intent intent3 = getIntent();
-                message2 = intent3.getStringExtra(BeginActivity.EXTRA_MESSAGE2);
-                if (message2.equals("Academic")){
-                    Intent intent = new Intent(getApplication(), QuizActivity.class);
-                    String str = "Academic";
-                    intent.putExtra(EXTRA_MESSAGE, str);
-                    startActivity(intent);
-                } else if (message2.equals("Business")){
-                    Intent intent = new Intent(getApplication(), QuizActivity.class);
-                    String str = "Business";
-                    intent.putExtra(EXTRA_MESSAGE, str);
-                    startActivity(intent);
-                } else {
-                    Intent intent = new Intent(getApplication(), QuizActivity.class);
-                    String str = "Daily";
-                    intent.putExtra(EXTRA_MESSAGE, str);
-                    startActivity(intent);
-                }
-
-
-
-                 */
             }
         });
     }

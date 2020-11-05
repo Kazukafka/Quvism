@@ -5,24 +5,35 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.database.Cursor;
+import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class ReviewActivity extends AppCompatActivity {
+
+    private int count = 3;
+
+    //Get Data from SQLite
+    public TestOpenHelper helper;
+    public SQLiteDatabase db;
 
     private LinearLayout laylay;
 
     private Timer Count;
     private TimerTask TimerTask;
     private android.os.Handler handle = new android.os.Handler();
-    private int count=5;
     private TextView countTxt;
 
     @Override
@@ -32,24 +43,8 @@ public class ReviewActivity extends AppCompatActivity {
         countTxt = (TextView)findViewById(R.id.countSecond_txt);
         setTitle("Recheck Your Mistakes");
         laylay = (LinearLayout)findViewById(R.id.laylay);
-        laylay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final ObjectAnimator oa1 = ObjectAnimator.ofFloat(laylay, "scaleX", 1f, 0f);
-                final ObjectAnimator oa2 = ObjectAnimator.ofFloat(laylay, "scaleX", 0f, 1f);
-                oa1.setInterpolator(new DecelerateInterpolator());
-                oa2.setInterpolator(new AccelerateDecelerateInterpolator());
-                oa1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-                        oa2.start();
-                    }
-                });
-                oa1.start();
-            }
-        });
         countSecond();
+        //animationReset();
     }
 
     public void flipAnimation(){
@@ -69,38 +64,145 @@ public class ReviewActivity extends AppCompatActivity {
 
     public void countSecond(){
         if (Count != null) {
-        //タイマーを停止
+        //Stop Timer
         Count.cancel();
-        //タイマーを破棄
+        //Destroy Timer
         Count = null;
-    } else {    //timer1が停止していた時
-        //新しいタイマーを生成
+    } else {    //if timer is paused
+        //Generate new timer
         Count = new Timer();
-        //タイマー作動時の動作を新規に登録
-        TimerTask = new Task1();
+        //Register action
+        TimerTask = new tasuku();
         //1秒後に1秒おきにTimerTaskの処理を実行するタイマーを起動
         Count.schedule(TimerTask, 1000, 1000);
     }
     }
-    //ここでタイマー作動時の動作をプログラムしている
-    public class Task1 extends TimerTask {
+    //WHen the timer works
+    public class tasuku extends TimerTask {
         @Override
         public void run() {
-            //メインスレッドに情報を送る
+            //Send info to main thread
             handle.post(new Runnable() {
                 @Override
                 public void run() {
-                    //タイマー作動時の実際の動作（カウントアップ）
-                    if (count == 0){
+                    //Count Up!
+
+                    /*
+                    for (; count == 0; count--){
+                        countTxt.setText(String.valueOf(count));
+                    }
+
+                     */
+
+                    /*
+                    for (; count == 0; count --){
+                        countTxt.setText(String.valueOf(count));
+                    }
+
+                     */
+
+
+
+                    while (count > 0){
+                        //count --;
+                        countTxt.setText(String.valueOf(count));
+                        if (count == 0){
+                            countTxt.setText("Stop");
+                            flipAnimation();
+                            break;
+                        } else {
+                            count -= 1;
+                            countTxt.setText(String.valueOf(count));
+                        }
+                    }
+
+
+
+                    /*
+                    if (count==0){
                         countTxt.setText("Stop");
-                        flipAnimation();
-                    } else {
+                        while(count>0){
+                            flipAnimation();
+                            break;
+                        }
+                    }else{
                         count -= 1;
                         countTxt.setText(String.valueOf(count));
                     }
+
+                     */
+
+
+
+
+
+                    /*
+                    int x = 100;
+                    while (x > 0){
+                        x --;
+                        countTxt.setText(String.valueOf(count));
+                        if (x == 0){
+                            countTxt.setText("Stop");
+                            flipAnimation();
+                            break;
+                        } else {
+                            x -= 1;
+                            countTxt.setText(String.valueOf(count));
+                        }
+                    }
+
+                     */
+
                 }
             });
         }
     }
 
+    private void animationReset() {
+        ObjectAnimator oa1 = ObjectAnimator.ofFloat(laylay, "scaleX", 0f, 0f);
+        ObjectAnimator oa2 = ObjectAnimator.ofFloat(laylay, "scaleX", 0f, 0f);
+    }
+
+
+    /*
+    public void readData(){
+        ListView list = findViewById(R.id.listView);
+        ArrayList labelList = new ArrayList();
+        if(helper == null){
+            helper = new TestOpenHelper(getApplicationContext());
+        }
+        if(db == null){
+            db = helper.getReadableDatabase();
+        } else {
+        }
+        Log.d("debug","**********Cursor");
+        Cursor cur = db.query(
+                "mistakesDB",
+                new String[] { "estonian", "english" },
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+
+        //How many raw lines in the database?
+        int rawCount = (int) DatabaseUtils.queryNumEntries(db, "mistakesDB");
+        cur.moveToFirst();
+
+        for(int i=1; i<=rawCount; i++){
+            labelList.add(cur.getString(0));
+            labelList.add(cur.getString(1));
+            cur.moveToNext();
+        }
+
+        //↓Never Forget to Close Cursor
+        cur.close();
+
+        CustomAdapter mAdapter = new CustomAdapter(this, 0, labelList);
+        list.setAdapter(mAdapter);
+        list.setDivider(null);
+    }
+
+     */
 }
