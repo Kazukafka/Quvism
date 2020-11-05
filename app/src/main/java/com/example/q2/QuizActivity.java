@@ -247,7 +247,6 @@ public class QuizActivity extends AppCompatActivity implements TextToSpeech.OnIn
         Intent intent = new Intent();
         intent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
         startActivityForResult(intent, MY_DATA_CHECK_CODE);
-
         countLabel = findViewById(R.id.countLabel);
         questionLabel = findViewById(R.id.questionLabel);
         answerBtn1 = findViewById(R.id.answerBtn1);
@@ -306,7 +305,6 @@ public class QuizActivity extends AppCompatActivity implements TextToSpeech.OnIn
             }
             showNextQuiz();
         }
-
     }
 
     @Override

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -42,8 +44,15 @@ public class ReviewActivity extends AppCompatActivity {
         countTxt = (TextView)findViewById(R.id.countSecond_txt);
         setTitle("Recheck Your Mistakes");
         laylay = (LinearLayout)findViewById(R.id.laylay);
-        readData();
         countSeconds();
+
+        Button nextBtn = findViewById(R.id.btnNext);
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
     public void countSeconds(){
@@ -78,7 +87,7 @@ public class ReviewActivity extends AppCompatActivity {
                         countTxt.setText("Answer");
                         flipAnimation();
                         TimerTask.cancel();
-                        readData();
+                        //readData();
                     }
                 }
             });
@@ -99,7 +108,6 @@ public class ReviewActivity extends AppCompatActivity {
         });
         oa1.start();
     }
-
 
 
     public void readData(){
@@ -128,11 +136,17 @@ public class ReviewActivity extends AppCompatActivity {
         int rawCount = (int) DatabaseUtils.queryNumEntries(db, "mistakesDB");
         cur.moveToFirst();
 
+        txtEstonian.setText(cur.getString(0));
+        txtEnglish.setText(cur.getString(1));
+        cur.moveToNext();
+
+        /*
         for(int i=1; i<=rawCount; i++){
             txtEstonian.setText(cur.getString(0));
             txtEnglish.setText(cur.getString(1));
             cur.moveToNext();
         }
+         */
 
         //↓Never Forget to Close Cursor
         cur.close();

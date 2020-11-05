@@ -60,7 +60,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:paddingBottom="1dp">
             <ImageButton
                 android:id="@+id/image_button_speak"
@@ -69,6 +69,18 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_round_speak" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="1dp">
+            <Button
+                android:background="@drawable/btn1"
+                android:id="@+id/btnNext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="NEXT" />
         </LinearLayout>
     </LinearLayout>
 
