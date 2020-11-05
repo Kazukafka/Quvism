@@ -23,8 +23,6 @@ import java.util.TimerTask;
 
 public class ReviewActivity extends AppCompatActivity {
 
-    private int count = 3;
-
     //Get Data from SQLite
     public TestOpenHelper helper;
     public SQLiteDatabase db;
@@ -35,6 +33,7 @@ public class ReviewActivity extends AppCompatActivity {
     private TimerTask TimerTask;
     private android.os.Handler handle = new android.os.Handler();
     private TextView countTxt;
+    private int count = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +42,47 @@ public class ReviewActivity extends AppCompatActivity {
         countTxt = (TextView)findViewById(R.id.countSecond_txt);
         setTitle("Recheck Your Mistakes");
         laylay = (LinearLayout)findViewById(R.id.laylay);
-        countSecond();
-        //animationReset();
+        readData();
+        countSeconds();
+    }
+
+    public void countSeconds(){
+        if (Count != null) {
+            //Stop Timer
+            Count.cancel();
+            //Destroy Timer
+            Count = null;
+        } else {    //if timer is paused
+            //Generate new timer
+            Count = new Timer();
+            //Register action
+            TimerTask = new tasuku();
+            //Implement timer par 1 second par 1 second
+            Count.schedule(TimerTask, 1000, 1000);
+        }
+    }
+
+    //WHen the timer works
+    public class tasuku extends TimerTask {
+        @Override
+        public void run() {
+            //Send info to main thread
+            handle.post(new Runnable() {
+                @Override
+                public void run() {
+                    //Timer Timer at the time of timer (count up)
+                    count --;
+                    //Show current count value in text view
+                    countTxt.setText(String.valueOf(count));
+                    if (count==0){
+                        countTxt.setText("Answer");
+                        flipAnimation();
+                        TimerTask.cancel();
+                        readData();
+                    }
+                }
+            });
+        }
     }
 
     public void flipAnimation(){
@@ -62,112 +100,12 @@ public class ReviewActivity extends AppCompatActivity {
         oa1.start();
     }
 
-    public void countSecond(){
-        if (Count != null) {
-        //Stop Timer
-        Count.cancel();
-        //Destroy Timer
-        Count = null;
-    } else {    //if timer is paused
-        //Generate new timer
-        Count = new Timer();
-        //Register action
-        TimerTask = new tasuku();
-        //1秒後に1秒おきにTimerTaskの処理を実行するタイマーを起動
-        Count.schedule(TimerTask, 1000, 1000);
-    }
-    }
-    //WHen the timer works
-    public class tasuku extends TimerTask {
-        @Override
-        public void run() {
-            //Send info to main thread
-            handle.post(new Runnable() {
-                @Override
-                public void run() {
-                    //Count Up!
-
-                    /*
-                    for (; count == 0; count--){
-                        countTxt.setText(String.valueOf(count));
-                    }
-
-                     */
-
-                    /*
-                    for (; count == 0; count --){
-                        countTxt.setText(String.valueOf(count));
-                    }
-
-                     */
 
 
-
-                    while (count > 0){
-                        //count --;
-                        countTxt.setText(String.valueOf(count));
-                        if (count == 0){
-                            countTxt.setText("Stop");
-                            flipAnimation();
-                            break;
-                        } else {
-                            count -= 1;
-                            countTxt.setText(String.valueOf(count));
-                        }
-                    }
-
-
-
-                    /*
-                    if (count==0){
-                        countTxt.setText("Stop");
-                        while(count>0){
-                            flipAnimation();
-                            break;
-                        }
-                    }else{
-                        count -= 1;
-                        countTxt.setText(String.valueOf(count));
-                    }
-
-                     */
-
-
-
-
-
-                    /*
-                    int x = 100;
-                    while (x > 0){
-                        x --;
-                        countTxt.setText(String.valueOf(count));
-                        if (x == 0){
-                            countTxt.setText("Stop");
-                            flipAnimation();
-                            break;
-                        } else {
-                            x -= 1;
-                            countTxt.setText(String.valueOf(count));
-                        }
-                    }
-
-                     */
-
-                }
-            });
-        }
-    }
-
-    private void animationReset() {
-        ObjectAnimator oa1 = ObjectAnimator.ofFloat(laylay, "scaleX", 0f, 0f);
-        ObjectAnimator oa2 = ObjectAnimator.ofFloat(laylay, "scaleX", 0f, 0f);
-    }
-
-
-    /*
     public void readData(){
-        ListView list = findViewById(R.id.listView);
-        ArrayList labelList = new ArrayList();
+        TextView txtEstonian = findViewById(R.id.estonian_txt);
+        TextView txtEnglish = findViewById(R.id.english_txt);
+
         if(helper == null){
             helper = new TestOpenHelper(getApplicationContext());
         }
@@ -191,18 +129,18 @@ public class ReviewActivity extends AppCompatActivity {
         cur.moveToFirst();
 
         for(int i=1; i<=rawCount; i++){
-            labelList.add(cur.getString(0));
-            labelList.add(cur.getString(1));
+            txtEstonian.setText(cur.getString(0));
+            txtEnglish.setText(cur.getString(1));
             cur.moveToNext();
         }
 
         //↓Never Forget to Close Cursor
         cur.close();
 
+        /*
         CustomAdapter mAdapter = new CustomAdapter(this, 0, labelList);
         list.setAdapter(mAdapter);
         list.setDivider(null);
+         */
     }
-
-     */
 }

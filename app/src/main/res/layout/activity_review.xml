@@ -42,14 +42,14 @@
                 android:gravity="center"
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/countLabel"
+                    android:id="@+id/estonian_txt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Estonia"
                     android:textAlignment="center"
                     android:textSize="60sp" />
                 <TextView
-                    android:id="@+id/questionLabel"
+                    android:id="@+id/english_txt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="English"

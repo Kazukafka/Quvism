@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".TestdbActivity" />
-        <activity android:name=".WrongActivity" />
+        <activity android:name=".MistakesActivity" />
         <activity android:name=".BeginActivity" />
         <activity android:name=".OutcomeActivity" />
         <activity android:name=".QuizActivity" /> <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->

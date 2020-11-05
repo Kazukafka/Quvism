@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class WrongActivity extends AppCompatActivity {
+public class MistakesActivity extends AppCompatActivity {
 
     public TestOpenHelper helper;
     public SQLiteDatabase db;
@@ -29,7 +29,7 @@ public class WrongActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wrong);
+        setContentView(R.layout.activity_mistakes);
         setTitle("Mistakes");
 
         readData();
@@ -70,7 +70,6 @@ public class WrongActivity extends AppCompatActivity {
         }
         if(db == null){
             db = helper.getReadableDatabase();
-        } else {
         }
         Log.d("debug","**********Cursor");
         Cursor cur = db.query(

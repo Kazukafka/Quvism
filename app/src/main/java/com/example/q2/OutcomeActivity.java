@@ -48,7 +48,7 @@ public class OutcomeActivity extends AppCompatActivity {
         btnTOMIS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), WrongActivity.class);
+                Intent intent = new Intent(getApplication(), MistakesActivity.class);
                 startActivity(intent);
             }
         });
