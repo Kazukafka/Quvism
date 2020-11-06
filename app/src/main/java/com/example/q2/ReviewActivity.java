@@ -49,26 +49,21 @@ public class ReviewActivity extends AppCompatActivity {
         countTxt = (TextView)findViewById(R.id.countSecond_txt);
         setTitle("Recheck Your Mistakes");
         laylay = (LinearLayout)findViewById(R.id.laylay);
-        /*
-        countSeconds();
-        readData();
 
-         */
+        countSeconds();
         readData();
 
         TextView txtEstonian = findViewById(R.id.estonian_txt);
         TextView txtEnglish = findViewById(R.id.english_txt);
-        txtEstonian.setText(ee_mis.get(0));
+        txtEstonian.setText(ee_mis.get(4));
         txtEnglish.setText("?");
-
-        countSeconds();
 
         Button nextBtn = findViewById(R.id.btnNext);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //count=4;
+                count=4;
                 //showNUM += 1;
-                txtEstonian.setText(ee_mis.get(showNUM));
+                txtEstonian.setText("TEST");
                 //txtEstonian.setText(String.valueOf(showNUM));
                 txtEnglish.setText("?");
                 countSeconds();
@@ -138,19 +133,10 @@ public class ReviewActivity extends AppCompatActivity {
             }
         });
         oa1.start();
-        //TextView txtEstonian = findViewById(R.id.estonian_txt);
-        TextView txtEnglish = findViewById(R.id.english_txt);
-        //txtEstonian.setText(ee_mis.get(showNUM));
-        txtEnglish.setText(eng_mis.get(showNUM));
-
-        showNUM++;
-        count=4;
     }
 
 
     public void readData(){
-        TextView txtEstonian = findViewById(R.id.estonian_txt);
-        TextView txtEnglish = findViewById(R.id.english_txt);
 
         if(helper == null){
             helper = new TestOpenHelper(getApplicationContext());
@@ -174,13 +160,10 @@ public class ReviewActivity extends AppCompatActivity {
         int rawCount = (int) DatabaseUtils.queryNumEntries(db, "mistakesDB");
         cur.moveToFirst();
 
-        //txtEstonian.setText(cur.getString(0));
-        //txtEnglish.setText(cur.getString(1));
-        cur.moveToNext();
-
-        for(int i=0; i<=rawCount; i++){
+        for(int i=1; i<=rawCount; i++){
             ee_mis.add(cur.getString(0));
             eng_mis.add(cur.getString(1));
+            cur.moveToNext();
         }
 
 
