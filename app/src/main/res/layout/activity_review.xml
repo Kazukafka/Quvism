@@ -45,15 +45,15 @@
                     android:id="@+id/estonian_txt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Estonia"
+                    android:text="Estonia1"
                     android:textAlignment="center"
-                    android:textSize="60sp" />
+                    android:textSize="45sp" />
                 <TextView
                     android:id="@+id/english_txt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="English"
-                    android:textSize="60sp"
+                    android:text="English1"
+                    android:textSize="45sp"
                     android:textAlignment="center" />
             </LinearLayout>
         </LinearLayout>

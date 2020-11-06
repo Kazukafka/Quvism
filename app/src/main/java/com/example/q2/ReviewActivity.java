@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -37,6 +38,9 @@ public class ReviewActivity extends AppCompatActivity {
     private TextView countTxt;
     private int count = 3;
 
+    List<String> ee_mis = new ArrayList<>();
+    List<String> eng_mis = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +53,9 @@ public class ReviewActivity extends AppCompatActivity {
         Button nextBtn = findViewById(R.id.btnNext);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                count=4;
+                countSeconds();
+                readData();
             }
         });
 
@@ -139,6 +145,12 @@ public class ReviewActivity extends AppCompatActivity {
         txtEstonian.setText(cur.getString(0));
         txtEnglish.setText(cur.getString(1));
         cur.moveToNext();
+
+        for(int i=1; i<=rawCount; i++){
+            ee_mis.add(cur.getString(0));
+            eng_mis.add(cur.getString(1));
+        }
+
 
         /*
         for(int i=1; i<=rawCount; i++){
