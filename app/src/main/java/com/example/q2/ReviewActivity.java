@@ -37,6 +37,7 @@ public class ReviewActivity extends AppCompatActivity {
     private android.os.Handler handle = new android.os.Handler();
     private TextView countTxt;
     private int count = 3;
+    private int showNUM = 0;
 
     List<String> ee_mis = new ArrayList<>();
     List<String> eng_mis = new ArrayList<>();
@@ -48,20 +49,45 @@ public class ReviewActivity extends AppCompatActivity {
         countTxt = (TextView)findViewById(R.id.countSecond_txt);
         setTitle("Recheck Your Mistakes");
         laylay = (LinearLayout)findViewById(R.id.laylay);
+        /*
+        countSeconds();
+        readData();
+
+         */
+        readData();
+
+        TextView txtEstonian = findViewById(R.id.estonian_txt);
+        TextView txtEnglish = findViewById(R.id.english_txt);
+        txtEstonian.setText(ee_mis.get(0));
+        txtEnglish.setText("?");
+
         countSeconds();
 
         Button nextBtn = findViewById(R.id.btnNext);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                count=4;
+                //count=4;
+                //showNUM += 1;
+                txtEstonian.setText(ee_mis.get(showNUM));
+                //txtEstonian.setText(String.valueOf(showNUM));
+                txtEnglish.setText("?");
                 countSeconds();
-                readData();
+                /*
+                txtEnglish.setText(eng_mis.get(0));
+                //count=4;
+                countSeconds();
+                //txtEstonian.setText(ee_mis.get(showArrayNum));
+                txtEnglish.setText(eng_mis.get(showNUM));
+                showNUM++;
+
+                 */
             }
         });
 
     }
 
     public void countSeconds(){
+        showNUM++;
         if (Count != null) {
             //Stop Timer
             Count.cancel();
@@ -93,7 +119,6 @@ public class ReviewActivity extends AppCompatActivity {
                         countTxt.setText("Answer");
                         flipAnimation();
                         TimerTask.cancel();
-                        //readData();
                     }
                 }
             });
@@ -113,6 +138,13 @@ public class ReviewActivity extends AppCompatActivity {
             }
         });
         oa1.start();
+        //TextView txtEstonian = findViewById(R.id.estonian_txt);
+        TextView txtEnglish = findViewById(R.id.english_txt);
+        //txtEstonian.setText(ee_mis.get(showNUM));
+        txtEnglish.setText(eng_mis.get(showNUM));
+
+        showNUM++;
+        count=4;
     }
 
 
@@ -142,11 +174,11 @@ public class ReviewActivity extends AppCompatActivity {
         int rawCount = (int) DatabaseUtils.queryNumEntries(db, "mistakesDB");
         cur.moveToFirst();
 
-        txtEstonian.setText(cur.getString(0));
-        txtEnglish.setText(cur.getString(1));
+        //txtEstonian.setText(cur.getString(0));
+        //txtEnglish.setText(cur.getString(1));
         cur.moveToNext();
 
-        for(int i=1; i<=rawCount; i++){
+        for(int i=0; i<=rawCount; i++){
             ee_mis.add(cur.getString(0));
             eng_mis.add(cur.getString(1));
         }
