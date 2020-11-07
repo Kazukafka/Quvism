@@ -50,39 +50,41 @@ public class ReviewActivity extends AppCompatActivity {
         setTitle("Recheck Your Mistakes");
         laylay = (LinearLayout)findViewById(R.id.laylay);
 
-        countSeconds();
+        if (Count != null) {
+            //Stop Timer
+            Count.cancel();
+            //Destroy Timer
+            Count = null;
+        } else {    //if timer is paused
+            //Generate new timer
+            Count = new Timer();
+            //Register action
+            TimerTask = new tasuku();
+            //Implement timer par 1 second par 1 second
+            Count.schedule(TimerTask, 1000, 1000);
+        }
+
+        //countSeconds();
         readData();
 
         TextView txtEstonian = findViewById(R.id.estonian_txt);
         TextView txtEnglish = findViewById(R.id.english_txt);
-        txtEstonian.setText(ee_mis.get(4));
-        txtEnglish.setText("?");
+        txtEstonian.setText(ee_mis.get(showNUM));
+        txtEnglish.setText("???");
 
         Button nextBtn = findViewById(R.id.btnNext);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                count=4;
-                //showNUM += 1;
-                txtEstonian.setText("TEST");
-                //txtEstonian.setText(String.valueOf(showNUM));
-                txtEnglish.setText("?");
                 countSeconds();
-                /*
-                txtEnglish.setText(eng_mis.get(0));
-                //count=4;
+                txtEstonian.setText(ee_mis.get(showNUM));
                 countSeconds();
-                //txtEstonian.setText(ee_mis.get(showArrayNum));
-                txtEnglish.setText(eng_mis.get(showNUM));
-                showNUM++;
-
-                 */
+                txtEnglish.setText("Try to Remember within 3 seconds");
             }
         });
-
     }
 
+
     public void countSeconds(){
-        showNUM++;
         if (Count != null) {
             //Stop Timer
             Count.cancel();
@@ -133,6 +135,12 @@ public class ReviewActivity extends AppCompatActivity {
             }
         });
         oa1.start();
+        TextView txtEstonian = findViewById(R.id.estonian_txt);
+        TextView txtEnglish = findViewById(R.id.english_txt);
+        txtEstonian.setText(ee_mis.get(showNUM));
+        txtEnglish.setText(eng_mis.get(showNUM));
+        showNUM++;
+        count=4;
     }
 
 
@@ -165,23 +173,7 @@ public class ReviewActivity extends AppCompatActivity {
             eng_mis.add(cur.getString(1));
             cur.moveToNext();
         }
-
-
-        /*
-        for(int i=1; i<=rawCount; i++){
-            txtEstonian.setText(cur.getString(0));
-            txtEnglish.setText(cur.getString(1));
-            cur.moveToNext();
-        }
-         */
-
         //↓Never Forget to Close Cursor
         cur.close();
-
-        /*
-        CustomAdapter mAdapter = new CustomAdapter(this, 0, labelList);
-        list.setAdapter(mAdapter);
-        list.setDivider(null);
-         */
     }
 }
