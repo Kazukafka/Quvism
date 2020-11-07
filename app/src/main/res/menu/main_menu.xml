@@ -14,7 +14,7 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_howtouse"
-        android:title="Your Mistakes"
+        android:title="Mistakes"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_askq"

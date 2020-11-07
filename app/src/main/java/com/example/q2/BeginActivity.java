@@ -98,7 +98,7 @@ public class BeginActivity extends AppCompatActivity {
                 builder.startChooser();
                 return true;
             case R.id.menu_howtouse:
-                Intent intent = new Intent(getApplication(), ReviewActivity.class);
+                Intent intent = new Intent(getApplication(), MistakesActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.menu_askq:
