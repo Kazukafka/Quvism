@@ -59,16 +59,15 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:textSize="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Daily Communication\nHere is 50 words\nGreeting, Simple Words etc"
+                android:layout_width="225dp"
+                android:layout_height="116dp"
+                android:text="Daily Communication\nThis is mainly Greetings\n, and Daily communications\nYou can use them right away\n ←Please click Icon Left"
+                android:textSize="17dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.803"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.502" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/image_button1"
@@ -98,17 +97,16 @@
             tools:context=".QuizActivity">
 
             <TextView
-                android:textSize="15dp"
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Business Communication\nHere is 50 words\nGreeting, Simple Words etc"
+                android:text="Normal Estonians Level1\n  Noun, Verb, etc\nIt'll help to study Estonian\n  ←Please click ICON LEFT"
+                android:textSize="17dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.808"
+                app:layout_constraintHorizontal_bias="0.9"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.453" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/image_button2"
@@ -138,16 +136,15 @@
             tools:context=".QuizActivity">
 
             <TextView
-                android:textSize="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Academic Communication\nHere is 50 words\nGreeting, Simple Words etc"
+                android:text="Normal Estonians Level2\nNoun, Verb, etc\nStep up to the next\n  ←Please click ICON LEFT"
+                android:textSize="17dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.808"
+                app:layout_constraintHorizontal_bias="0.9"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.502" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/image_button3"
