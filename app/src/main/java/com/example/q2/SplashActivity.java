@@ -26,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        },1000);
+        },900);
     }
 
     private void startScaling(){
@@ -36,7 +36,7 @@ public class SplashActivity extends AppCompatActivity {
                 Animation.RELATIVE_TO_SELF,
                 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         //time
-        scaleAnim.setDuration(1000);
+        scaleAnim.setDuration(2500);
         //repeat
         scaleAnim.setRepeatCount(0);
         //Show it after
