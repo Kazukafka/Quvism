@@ -143,7 +143,7 @@ public class QuizActivity extends AppCompatActivity implements TextToSpeech.OnIn
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        //setTitle("Quiz");
+        setTitle("Quiz");
         //Ad Place
         // Test App ID
         MobileAds.initialize(this,

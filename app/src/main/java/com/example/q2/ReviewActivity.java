@@ -2,6 +2,10 @@ package com.example.q2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.MobileAds;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
@@ -30,6 +34,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class ReviewActivity extends AppCompatActivity implements TextToSpeech.OnInitListener{
+    private LinearLayout kLayout1;
+    private LinearLayout kLayout2;
+
     int MY_DATA_CHECK_CODE = 1000;
     TextToSpeech textToSpeech;
     TextView ttsText;
@@ -54,6 +61,50 @@ public class ReviewActivity extends AppCompatActivity implements TextToSpeech.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
+
+        //Ad Place
+        // Test App ID
+        MobileAds.initialize(this,
+                "ca-app-pub-6500766760315589~2685471571");
+        AdView adViewOne = findViewById(R.id.adView);
+        AdRequest adRequest1 = new AdRequest.Builder().build();
+        adViewOne.loadAd(adRequest1);
+
+        // ad's lifecycle: loading, opening, closing, and so on
+        adViewOne.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                Log.d("debug","Code to be executed when an ad finishes loading.");
+            }
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                Log.d("debug","Code to be executed when an ad request fails.");
+            }
+            @Override
+            public void onAdOpened() {
+                Log.d("debug","Code to be executed when an ad opens an overlay that covers the screen.");
+            }
+            @Override
+            public void onAdLeftApplication() {
+                Log.d("debug","Code to be executed when the user has left the app.");
+            }
+            @Override
+            public void onAdClosed() {
+                Log.d("debug","Code to be executed when when the user is about to return to the app after tapping on an ad.");
+            }
+        });
+
+        Button btnFromReviewToBegin = findViewById(R.id.btnGOTOMENU);
+
+        btnFromReviewToBegin.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplication(), BeginActivity.class);
+            startActivity(intent);
+        });
+
+        kLayout1 = (LinearLayout)findViewById(R.id.layout1);
+        kLayout2 = (LinearLayout)findViewById(R.id.layout2);
+
+        kLayout2.setVisibility(View.INVISIBLE);
 
         //Generate TTS Instance
         ImageButton speakbutton;
@@ -99,15 +150,21 @@ public class ReviewActivity extends AppCompatActivity implements TextToSpeech.On
         TextView txtEstonian = findViewById(R.id.estonian_txt);
         TextView txtEnglish = findViewById(R.id.english_txt);
         txtEstonian.setText(ee_mis.get(showNUM));
-        txtEnglish.setText("???");
+        txtEnglish.setText("Try to Remember within 3 seconds");
 
         Button nextBtn = findViewById(R.id.btnNext);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                countSeconds();
-                txtEstonian.setText(ee_mis.get(showNUM));
-                countSeconds();
-                txtEnglish.setText("Try to Remember within 3 seconds");
+
+                if (showNUM==ee_mis.size()){
+                    kLayout1.setVisibility(View.GONE);
+                    kLayout2.setVisibility(View.VISIBLE);
+                } else {
+                    countSeconds();
+                    txtEstonian.setText(ee_mis.get(showNUM));
+                    countSeconds();
+                    txtEnglish.setText("???");
+                }
             }
         });
     }
