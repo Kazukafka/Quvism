@@ -10,21 +10,29 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class ReviewActivity extends AppCompatActivity {
+public class ReviewActivity extends AppCompatActivity implements TextToSpeech.OnInitListener{
+    int MY_DATA_CHECK_CODE = 1000;
+    TextToSpeech textToSpeech;
+    TextView ttsText;
 
     //Get Data from SQLite
     public TestOpenHelper helper;
@@ -46,6 +54,27 @@ public class ReviewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
+
+        //Generate TTS Instance
+        ImageButton speakbutton;
+        textToSpeech = new TextToSpeech(getApplicationContext(), this);
+        ttsText = (TextView) findViewById(R.id.estonian_txt);
+        speakbutton = (ImageButton) findViewById(R.id.image_button_speak_reviewAC);
+        speakbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String text = ttsText.getText().toString();
+                if(text.length() > 0){
+                    float pitch = (float) 1.0;
+                    float speed = (float) 1.0;
+                    textToSpeech.setPitch(pitch);
+                    textToSpeech.setSpeechRate(speed);
+                    textToSpeech.setLanguage(new Locale("et-EE"));
+                    textToSpeech.speak(text,TextToSpeech.QUEUE_ADD, null);
+                }
+            }
+        });
+
         countTxt = (TextView)findViewById(R.id.countSecond_txt);
         setTitle("Recheck Your Mistakes");
         laylay = (LinearLayout)findViewById(R.id.laylay);
@@ -175,5 +204,28 @@ public class ReviewActivity extends AppCompatActivity {
         }
         //↓Never Forget to Close Cursor
         cur.close();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == MY_DATA_CHECK_CODE) {
+            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS){
+                textToSpeech = new TextToSpeech(this, this);
+            } else {
+                Intent intent = new Intent();
+                intent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+                startActivity(intent);
+            }
+        }
+    }
+
+    //Only Init Must be needed
+    public void onInit(int i) {
+        if(i == textToSpeech.SUCCESS){
+            //Toast.makeText(this,"Success",Toast.LENGTH_SHORT).show();
+        } else if (i == textToSpeech.ERROR){
+            //Toast.makeText(this,"Error",Toast.LENGTH_SHORT).show();
+        }
     }
 }

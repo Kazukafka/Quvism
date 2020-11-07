@@ -45,14 +45,14 @@
                     android:id="@+id/estonian_txt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Estonia1"
+                    android:text="Estonia"
                     android:textAlignment="center"
                     android:textSize="45sp" />
                 <TextView
                     android:id="@+id/english_txt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="English1"
+                    android:text="English"
                     android:textSize="45sp"
                     android:textAlignment="center" />
             </LinearLayout>
@@ -63,7 +63,7 @@
             android:orientation="vertical"
             android:paddingBottom="1dp">
             <ImageButton
-                android:id="@+id/image_button_speak"
+                android:id="@+id/image_button_speak_reviewAC"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_margin="10dp"
