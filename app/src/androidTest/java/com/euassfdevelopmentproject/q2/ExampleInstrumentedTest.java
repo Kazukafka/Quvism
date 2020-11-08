@@ -1,4 +1,4 @@
-package com.example.q2;
+package com.euassfdevelopmentproject.q2;
 
 import android.content.Context;
 

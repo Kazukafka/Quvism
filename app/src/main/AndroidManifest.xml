@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.q2">
+    package="com.euassfdevelopmentproject.q2">
 
     <application
         android:allowBackup="true"
@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ReviewActivity"></activity>
-        <activity android:name=".SplashActivity">
+        <activity android:name="com.euassfdevelopmentproject.q2.ReviewActivity"></activity>
+        <activity android:name="com.euassfdevelopmentproject.q2.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,10 +18,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".TestdbActivity" />
-        <activity android:name=".MistakesActivity" />
-        <activity android:name=".BeginActivity" />
-        <activity android:name=".OutcomeActivity" />
-        <activity android:name=".QuizActivity" /> <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+        <activity android:name="com.euassfdevelopmentproject.q2.MistakesActivity" />
+        <activity android:name="com.euassfdevelopmentproject.q2.BeginActivity" />
+        <activity android:name="com.euassfdevelopmentproject.q2.OutcomeActivity" />
+        <activity android:name="com.euassfdevelopmentproject.q2.QuizActivity" /> <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3940256099942544~3347511713" />
