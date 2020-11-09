@@ -98,8 +98,10 @@ public class BeginActivity extends AppCompatActivity {
                 builder.startChooser();
                 return true;
             case R.id.menu_howtouse:
-                Intent intent = new Intent(getApplication(), MistakesActivity.class);
-                startActivity(intent);
+                String url1 = "https://youtu.be/weIBwggLFHY";
+                Intent i1 = new Intent(Intent.ACTION_VIEW);
+                i1.setData(Uri.parse(url1));
+                startActivity(i1);
                 return true;
             case R.id.menu_askq:
                 String url2 = "https://forms.gle/d2YA2s8cVNGhh3vt6";

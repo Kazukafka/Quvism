@@ -208,18 +208,18 @@ public class ReviewActivity extends AppCompatActivity implements TextToSpeech.On
     }
 
     public void flipAnimation(){
-        final ObjectAnimator oa1 = ObjectAnimator.ofFloat(laylay, "scaleX", 1f, 0f);
-        final ObjectAnimator oa2 = ObjectAnimator.ofFloat(laylay, "scaleX", 0f, 1f);
-        oa1.setInterpolator(new DecelerateInterpolator());
-        oa2.setInterpolator(new AccelerateDecelerateInterpolator());
-        oa1.addListener(new AnimatorListenerAdapter() {
+        final ObjectAnimator flip1 = ObjectAnimator.ofFloat(laylay, "scaleX", 1f, 0f);
+        final ObjectAnimator flip2 = ObjectAnimator.ofFloat(laylay, "scaleX", 0f, 1f);
+        flip1.setInterpolator(new DecelerateInterpolator());
+        flip2.setInterpolator(new AccelerateDecelerateInterpolator());
+        flip1.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                oa2.start();
+                flip2.start();
             }
         });
-        oa1.start();
+        flip1.start();
         TextView txtEstonian = findViewById(R.id.estonian_txt);
         TextView txtEnglish = findViewById(R.id.english_txt);
         txtEstonian.setText(ee_mis.get(showNUM));
