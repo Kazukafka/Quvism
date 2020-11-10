@@ -34,4 +34,4 @@ Referance
 flip animation https://stackoverflow.com/questions/46111262/card-flip-animation-in-android
 
 
-to study the system flip animation(comment out now) https://github.com/wajahatkarim3/EasyFlipView
+to study the system flip animation https://github.com/wajahatkarim3/EasyFlipView
