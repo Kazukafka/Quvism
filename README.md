@@ -28,5 +28,10 @@ Please go to the “Gradle Script” → “build.gradle”
 Please make sure that your compileSdkVersion & targetSdkVersion are 29 NOT 30 otherwise, it has a plugin issue.
 In the next step, open the “Open AVD Manager” and choose “Pixel 3a XL API 30”. Then made it.
 
-==============Referance===============
+Referance
+
+
 flip animation https://stackoverflow.com/questions/46111262/card-flip-animation-in-android
+
+
+to study the system flip animation(comment out now) https://github.com/wajahatkarim3/EasyFlipView
