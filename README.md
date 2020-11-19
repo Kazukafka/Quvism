@@ -1,6 +1,9 @@
 UPDATE INFO (11.11.2019), now you can download from google play store
 https://play.google.com/store/apps/details?id=com.euassfdevelopmentproject.q2
 
+The link of demo_video
+https://youtu.be/weIBwggLFHY
+
 The link of buid instraction.
 https://docs.google.com/document/d/1_t0MVjGjsYUDdzUNjAKc5-L9PVjaNoBSnnLmP_5_IgE/edit?usp=sharing
 
